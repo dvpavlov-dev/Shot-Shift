@@ -1,16 +1,16 @@
+using Shot_Shift.UI.Scripts;
+using UnityEngine;
 using Zenject;
 
 namespace Infrastructure
 {
     public class ProjectInstaller : MonoInstaller
     {
+        [SerializeField] private LoadingCurtains _loadingCurtains;
+        
         public override void InstallBindings()
         {
-    #if UNITY_STANDALONE
-            Container.Bind<IInputService>().FromInstance(new StandaloneInputService());
-    #elif UNITY_ANDROID
-            Container.Bind<IInputService>().FromInstance(new MobileInputService());
-    #endif
+            Container.Bind<ILoadingCurtains>().FromInstance(_loadingCurtains).AsSingle().NonLazy();
         }
     }
 }
