@@ -1,15 +1,16 @@
-using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using R3;
+using Shot_Shift.Actors.Enemy.Scripts;
 using UnityEngine;
-using Object = UnityEngine.Object;
+using Zenject;
 
 namespace Shot_Shift.Infrastructure.Scripts.Factories
 {
     public class ActorsFactory : IActorsFactory
     {
+        private readonly DiContainer _container;
         private readonly Configs _configs;
         private readonly Queue<GameObject> _enemiesPool = new();
         
@@ -17,47 +18,34 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
         private CompositeDisposable _disposable = new();
         private Transform _containerForEnemy;
 
-        public ActorsFactory(Configs configs)
+        public ActorsFactory(DiContainer container, Configs configs)
         {
+            _container = container;
             _configs = configs;
             
             Application.quitting += OnGameQuit;
         }
-        private void OnGameQuit()
-        {
-            Application.quitting -= OnGameQuit;
-            _disposable.Dispose();
-        }
 
-        public void InitializeFactory(Action onInitializedEnded)
+        public Observable<Unit> InitializeFactory()
         {
             _disposable = new CompositeDisposable();
             
-            if (_enemiesPool.Count == 0)
+            return Observable.FromAsync(async cancellationToken =>
             {
-                Observable.FromAsync(CreateEnemyPool)
-                    .Subscribe(
-                        onNext: _ =>
-                        {
-                            onInitializedEnded?.Invoke();
-                        }
-                    ).AddTo(_disposable);
-            }
-            else
-            {
-                onInitializedEnded?.Invoke();
-            }
+                await CreateEnemyPool(cancellationToken);
+            });
         }
 
         public GameObject CreatePlayer()
         {
-            _player = Object.Instantiate(_configs.PlayerConfig.PlayerPrefab);
+            _player ??= _container.InstantiatePrefab(_configs.PlayerConfig.PlayerPrefab ,new Vector3(0, 0, 0), Quaternion.identity, null);
             return _player;
         }
 
         public GameObject GetEnemy()
         {
             GameObject enemy = _enemiesPool.Count == 0 ? CreateEnemy() : _enemiesPool.Dequeue();
+            enemy.GetComponent<IEnemy>().Initialize(_player, this);
             enemy.SetActive(true);
 
             return enemy;
@@ -86,18 +74,17 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
                 await Task.Yield();
             }
         }
-        
+
         private GameObject CreateEnemy()
         {
-            return Object.Instantiate(_configs.EnemyConfig.EnemyPrefab, _containerForEnemy);
+            return _container.InstantiatePrefab(_configs.EnemyConfig.EnemyPrefab, _containerForEnemy);
+        }
+        
+        private void OnGameQuit()
+        {
+            Application.quitting -= OnGameQuit;
+            _disposable.Dispose();
         }
     }
-    
-    public interface IActorsFactory
-    {
-        void InitializeFactory(Action onInitializedEnded);
-        GameObject CreatePlayer();
-        GameObject GetEnemy();
-        void DisposeEnemy(GameObject enemy);
-    }
+
 }

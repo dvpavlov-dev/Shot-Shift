@@ -6,7 +6,7 @@ namespace Shot_Shift.Actors.Enemy.Scripts
     [RequireComponent(typeof(NavMeshAgent))]
     public class EnemyAI : MonoBehaviour
     {
-        public Transform target;
+        private Transform _target;
         private NavMeshAgent _agent;
 
         private void OnEnable()
@@ -14,9 +14,17 @@ namespace Shot_Shift.Actors.Enemy.Scripts
             _agent = GetComponent<NavMeshAgent>();
         }
 
-        void Update()
+        private void Update()
         {
-            _agent.SetDestination(target.position);
+            if(_target != null)
+            {
+                _agent.SetDestination(_target.position);
+            }
+        }
+
+        public void Initialize(GameObject target)
+        {
+            _target = target.transform;
         }
     }
 }

@@ -28,6 +28,8 @@ namespace Shot_Shift.Actors.Weapon.Scripts
 
     public interface IDamageable
     {
+        Action<float> OnHealthChanged { get; set; }
+        Action OnDeath { get; set; }
         void TakeDamage(float damage);
     }
 }

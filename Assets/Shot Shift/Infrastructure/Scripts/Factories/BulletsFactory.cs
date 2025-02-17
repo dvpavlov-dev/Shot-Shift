@@ -38,6 +38,14 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
             }
         }
 
+        public Observable<Unit> InitializeFactory()
+        {
+            return Observable.FromAsync(async cancellationToken =>
+            {
+                await Task.Delay(1, cancellationToken); // Задержка 2 секунды
+            });
+        }
+        
         public GameObject GetBullet()
         {
             GameObject bullet = _bulletsPool.Count == 0 ? CreateBullet() : _bulletsPool.Dequeue();
@@ -61,11 +69,5 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
             return null;
         }
     }
-    
-    public interface IBulletsFactory
-    {
-        void InitializeFactory(Action onInitializedEnded);
-        GameObject GetBullet();
-        void DisposeBullet(GameObject bullet);
-    }
+
 }

@@ -9,7 +9,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Installers
         
         public override void InstallBindings()
         {
-            Container.BindInstance(levelProgressWatcher);
+            Container.BindInstance(levelProgressWatcher).AsSingle().NonLazy();
         }
     }
 }

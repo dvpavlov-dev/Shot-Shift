@@ -44,9 +44,5 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
             _disposable.Dispose();
         }
     }
-    
-    public interface ISceneLoaderService
-    {
-        void LoadScene(string sceneName, Action onSceneLoaded = null);
-    }
+
 }
