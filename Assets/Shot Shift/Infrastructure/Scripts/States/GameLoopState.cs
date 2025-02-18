@@ -3,7 +3,8 @@ using Shot_Shift.Infrastructure.Scripts.Factories;
 using Shot_Shift.Infrastructure.Scripts.Services;
 using Shot_Shift.UI.Scripts;
 using UnityEngine;
-namespace Shot_Shift.Infrastructure.Scripts
+
+namespace Shot_Shift.Infrastructure.Scripts.States
 {
     public class GameLoopState : IState
     {

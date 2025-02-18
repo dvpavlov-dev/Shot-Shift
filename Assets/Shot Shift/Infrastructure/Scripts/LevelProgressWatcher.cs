@@ -1,7 +1,7 @@
-using System;
 using R3;
 using Shot_Shift.Infrastructure.Scripts.Factories;
 using Shot_Shift.Infrastructure.Scripts.Services;
+using Shot_Shift.Infrastructure.Scripts.States;
 using UnityEngine;
 using Zenject;
 
@@ -36,6 +36,9 @@ namespace Shot_Shift.Infrastructure.Scripts
         private void OnLevelFinished()
         {
             Debug.Log("LevelProgressWatcher.LevelFinished");
+            
+            _playerProgressService.ChangeLevelData(_playerProgressService.CurrentLevel + 1);
+            _gameStateMachine.Enter<GameLoopState>();
         }
 
         private void OnDestroy()

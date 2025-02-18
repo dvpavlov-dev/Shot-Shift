@@ -45,7 +45,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
         public GameObject GetEnemy()
         {
             GameObject enemy = _enemiesPool.Count == 0 ? CreateEnemy() : _enemiesPool.Dequeue();
-            enemy.GetComponent<IEnemy>().Initialize(_player, this);
+            enemy.GetComponent<IEnemy>().Initialize(_configs.EnemyConfig, _player, this);
             enemy.SetActive(true);
 
             return enemy;

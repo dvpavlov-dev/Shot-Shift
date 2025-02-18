@@ -5,6 +5,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
 {
     public class PlayerProgressService : IInitializable
     {
+        private Configs _configs;
         private const string CURRENT_LEVEL = "CurrentLevel";
         private const string COINS_COUNT = "CoinsCount";
         private const string HEALTH_UPGRADE = "HealthUpgrade";
@@ -17,6 +18,12 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
         public float HealthUpgrade { get; private set; }
         public float DamageUpgrade { get; private set; }
         public float RecoilUpgrade { get; private set; }
+
+        [Inject]
+        private void Construct(Configs configs)
+        {
+            _configs = configs;
+        }
         
         public void Initialize()
         {
@@ -25,6 +32,11 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
 
         public void ChangeLevelData(int currentLevel)
         {
+            if (_configs.LevelsConfig.levels.Count < currentLevel)
+            {
+                currentLevel = _configs.LevelsConfig.levels.Count - 1;
+            }
+            
             CurrentLevel = currentLevel;
 
             if (currentLevel > LastCompletedLevel)

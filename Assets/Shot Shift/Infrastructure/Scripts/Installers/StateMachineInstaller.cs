@@ -1,3 +1,4 @@
+using Shot_Shift.Infrastructure.Scripts.States;
 using Zenject;
 namespace Shot_Shift.Infrastructure.Scripts
 {

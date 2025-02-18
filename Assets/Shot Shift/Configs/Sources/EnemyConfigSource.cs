@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 namespace Shot_Shift.Configs.Sources
 {
     [CreateAssetMenu(fileName = "EnemyConfig", menuName = "Configs/EnemyConfig")]
@@ -7,5 +6,9 @@ namespace Shot_Shift.Configs.Sources
     {
         public GameObject EnemyPrefab;
         public float Health;
+        public float Damage;
+        public float CooldownAttack;
+        public float AttackDistance;
+        public float Speed;
     }
 }

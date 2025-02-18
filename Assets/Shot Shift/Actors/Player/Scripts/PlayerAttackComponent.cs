@@ -2,7 +2,7 @@ using Infrastructure;
 using UnityEngine;
 using Zenject;
 
-namespace Shot_Shift.Player.Scripts
+namespace Shot_Shift.Actors.Player.Scripts
 {
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerAttackComponent : MonoBehaviour
