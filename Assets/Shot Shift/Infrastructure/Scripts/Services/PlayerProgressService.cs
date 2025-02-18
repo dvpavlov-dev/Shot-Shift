@@ -12,6 +12,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
         private const string RECOIL_UPGRADE = "RecoilUpgrade";
         
         public int CurrentLevel { get; private set; }
+        public int LastCompletedLevel { get; private set; }
         public int CoinsCount { get; private set; }
         public float HealthUpgrade { get; private set; }
         public float DamageUpgrade { get; private set; }
@@ -25,6 +26,11 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
         public void ChangeLevelData(int currentLevel)
         {
             CurrentLevel = currentLevel;
+
+            if (currentLevel > LastCompletedLevel)
+            {
+                LastCompletedLevel = currentLevel;
+            }
         }
 
         public void ChangeCoinsData(int coins)

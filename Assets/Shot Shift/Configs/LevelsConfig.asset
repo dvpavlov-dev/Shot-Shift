@@ -14,10 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - NameLevel: Level 1
-    EnemyCount: 5
+    EnemyCount: 2
     IsTimerNeeded: 0
     TimerIntervalInSeconds: 0
   - NameLevel: Level 2
+    EnemyCount: 4
+    IsTimerNeeded: 1
+    TimerIntervalInSeconds: 0
+  - NameLevel: Level 3
+    EnemyCount: 6
+    IsTimerNeeded: 0
+    TimerIntervalInSeconds: 0
+  - NameLevel: Level 4
+    EnemyCount: 8
+    IsTimerNeeded: 0
+    TimerIntervalInSeconds: 0
+  - NameLevel: Level 5
     EnemyCount: 10
+    IsTimerNeeded: 0
+    TimerIntervalInSeconds: 0
+  - NameLevel: Level 6
+    EnemyCount: 12
+    IsTimerNeeded: 0
+    TimerIntervalInSeconds: 0
+  - NameLevel: Level 6
+    EnemyCount: 12
+    IsTimerNeeded: 0
+    TimerIntervalInSeconds: 0
+  - NameLevel: Level 8
+    EnemyCount: 16
     IsTimerNeeded: 1
     TimerIntervalInSeconds: 0
