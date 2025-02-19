@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using R3;
 using Shot_Shift.Actors.Enemy.Scripts;
+using Shot_Shift.Actors.Weapon.Scripts;
 using UnityEngine;
 using Zenject;
 
@@ -39,12 +40,14 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
         public GameObject CreatePlayer()
         {
             _player ??= _container.InstantiatePrefab(_configs.PlayerConfig.PlayerPrefab ,new Vector3(0, 0, 0), Quaternion.identity, null);
+            _player.GetComponent<IDamageable>().Setup(_configs.PlayerConfig.Health);
             return _player;
         }
 
         public GameObject GetEnemy()
         {
             GameObject enemy = _enemiesPool.Count == 0 ? CreateEnemy() : _enemiesPool.Dequeue();
+            enemy.GetComponent<IDamageable>().Setup(_configs.EnemyConfig.Health);
             enemy.GetComponent<IEnemy>().Initialize(_configs.EnemyConfig, _player, this);
             enemy.SetActive(true);
 

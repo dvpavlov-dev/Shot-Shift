@@ -8,8 +8,13 @@ namespace Shot_Shift.Actors.Weapon.Scripts
         public Action<float> OnHealthChanged { get; set; }
         public Action OnDeath { get; set; }
         
-        [SerializeField] private float _health = 100f;
+        private float _health;
 
+        public void Setup(float maxHealth)
+        {
+            _health = maxHealth;
+        }
+        
         public void TakeDamage(float damage)
         {
             _health -= damage;
@@ -30,6 +35,7 @@ namespace Shot_Shift.Actors.Weapon.Scripts
     {
         Action<float> OnHealthChanged { get; set; }
         Action OnDeath { get; set; }
+        void Setup(float maxHealth);
         void TakeDamage(float damage);
     }
 }

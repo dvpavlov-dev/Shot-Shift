@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Shot_Shift.UI.Scripts.StartScene
 {
-    public class StartMenuController : MonoBehaviour
+    public class StartMenuUIController : MonoBehaviour
     {
         [SerializeField] private List<WindowView> _windows;
 

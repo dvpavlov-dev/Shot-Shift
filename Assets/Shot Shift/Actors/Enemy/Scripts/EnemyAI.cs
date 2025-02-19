@@ -11,13 +11,21 @@ namespace Shot_Shift.Actors.Enemy.Scripts
         private Transform _target;
         private NavMeshAgent _agent;
         private EnemyConfigSource _enemyConfig;
-        private bool _isCanAttack;
-
-        private void OnEnable()
+        private bool _isAttacking;
+        
+        public void Initialize(EnemyConfigSource enemyConfig, GameObject target)
         {
+            _enemyConfig = enemyConfig;
+            _target = target.transform;
+            
             _agent = GetComponent<NavMeshAgent>();
             _agent.speed = _enemyConfig.Speed;
             _agent.stoppingDistance = _enemyConfig.AttackDistance - 1;
+        }
+
+        private void OnEnable()
+        {
+
         }
 
         private void Update()
@@ -32,12 +40,12 @@ namespace Shot_Shift.Actors.Enemy.Scripts
                 }
             }
         }
-        
+
         private void AttackTarget()
         {
-            if (_isCanAttack && _target.GetComponent<IDamageable>() is {} damageable)
+            if (!_isAttacking && _target.GetComponent<IDamageable>() is {} damageable)
             {
-                _isCanAttack = false;
+                _isAttacking = true;
                 damageable.TakeDamage(_enemyConfig.Damage);
                 
                 Invoke(nameof(CooldownAttackEnded), _enemyConfig.CooldownAttack);
@@ -46,13 +54,7 @@ namespace Shot_Shift.Actors.Enemy.Scripts
 
         private void CooldownAttackEnded()
         {
-            _isCanAttack = true;
-        }
-
-        public void Initialize(EnemyConfigSource enemyConfig, GameObject target)
-        {
-            _enemyConfig = enemyConfig;
-            _target = target.transform;
+            _isAttacking = false;
         }
     }
 }
