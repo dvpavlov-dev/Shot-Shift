@@ -23,8 +23,6 @@ namespace Shot_Shift.Actors.Weapon.Scripts
             {
                 _health = 0f;
                 OnDeath?.Invoke();
-                
-                Destroy(gameObject);
             }
             
             OnHealthChanged?.Invoke(_health);

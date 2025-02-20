@@ -16,10 +16,10 @@ MonoBehaviour:
   - NameLevel: Level 1
     EnemyCount: 2
     IsTimerNeeded: 0
-    TimerIntervalInSeconds: 0
+    TimerIntervalInSeconds: 10
   - NameLevel: Level 2
     EnemyCount: 4
-    IsTimerNeeded: 1
+    IsTimerNeeded: 0
     TimerIntervalInSeconds: 0
   - NameLevel: Level 3
     EnemyCount: 6

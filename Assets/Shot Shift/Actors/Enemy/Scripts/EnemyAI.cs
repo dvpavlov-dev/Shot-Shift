@@ -23,18 +23,13 @@ namespace Shot_Shift.Actors.Enemy.Scripts
             _agent.stoppingDistance = _enemyConfig.AttackDistance - 1;
         }
 
-        private void OnEnable()
-        {
-
-        }
-
         private void Update()
         {
-            if(_target != null)
+            if(_target != null && gameObject.activeSelf)
             {
                 _agent.SetDestination(_target.position);
 
-                if (_agent.remainingDistance <= _enemyConfig.AttackDistance)
+                if (Vector3.Distance(_target.position, transform.position) <= _enemyConfig.AttackDistance)
                 {
                     AttackTarget();
                 }

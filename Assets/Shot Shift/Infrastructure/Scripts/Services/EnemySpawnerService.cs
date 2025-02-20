@@ -12,31 +12,32 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
     {
         public Action LevelFinished { get; set; }
 
-        private const float DISTANCE_SPAWN = 30;
+        private const float DISTANCE_SPAWN = 15;
         
         private IActorsFactory _actorsFactory;
         private Random _rnd = new();
-        private int totalEnemyCount = 0;
-    
+        private int _totalEnemyCount = 0;
+        private IDisposable _enemyObserver;
+
         public void SpawnEnemy(IActorsFactory actorsFactory, LevelsConfigSource.Level levelConfig, CompositeDisposable disposable)
         {
             _actorsFactory = actorsFactory;
 
-            totalEnemyCount = levelConfig.EnemyCount;
+            _totalEnemyCount = levelConfig.EnemyCount;
             int enemyCount = 0;
             
-            Observable
+            _enemyObserver = Observable
                 .Interval(TimeSpan.FromSeconds(0.5f))
                 .Subscribe(_ =>
                 {
                     GameObject enemy = _actorsFactory.GetEnemy();
                     enemy.transform.position = SetPositionEnemy();
-                    enemy.GetComponent<IDamageable>().OnDeath = OnDeathEnemy;
+                    enemy.GetComponent<IDamageable>().OnDeath += OnDeathEnemy;
                     enemyCount++;
                     
                     if(enemyCount >= levelConfig.EnemyCount)
                     {
-                        disposable.Dispose();
+                        _enemyObserver.Dispose();
                     }
                 })
                 .AddTo(disposable);
@@ -44,7 +45,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
 
         private void OnDeathEnemy()
         {
-            if (--totalEnemyCount <= 0)
+            if (--_totalEnemyCount == 0)
             {
                 LevelFinished?.Invoke();
             }

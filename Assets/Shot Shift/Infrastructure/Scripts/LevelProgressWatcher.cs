@@ -25,6 +25,8 @@ namespace Shot_Shift.Infrastructure.Scripts
         private PlayerProgressService _playerProgressService;
         private CompositeDisposable _disposable = new();
         private IDamageable _playerDamageable;
+        
+        private IDisposable _timerObserver;
 
         [Inject]
         private void Construct(GameStateMachine gameStateMachine, IActorsFactory actorsFactory, Configs configs, PlayerProgressService playerProgressService)
@@ -72,19 +74,19 @@ namespace Shot_Shift.Infrastructure.Scripts
 
         private void StartTimer(int startSeconds)
         {
-            Observable
+            _timerObserver = Observable
                 .Interval(TimeSpan.FromSeconds(1))
                 .Subscribe(_ =>
                 {
                     if(--startSeconds > 0)
                     {
-                        UpdateTimer(startSeconds--);
+                        UpdateTimer(startSeconds);
                     }
                     else
                     {
                         UpdateTimer(0);
                         OnLevelLost();
-                        _disposable.Dispose();
+                        _timerObserver.Dispose();
                     }
                 })
                 .AddTo(_disposable);
@@ -118,6 +120,7 @@ namespace Shot_Shift.Infrastructure.Scripts
 
         private void OnDestroy()
         {
+            _timerObserver?.Dispose();
             _disposable.Dispose();
         }
     }
