@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyConfig
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 6723186459751877794, guid: 76f0dbefec9a95d429f2ae25b5949316, type: 3}
-  Health: 10
+  Health: 50
   Damage: 5
   CooldownAttack: 2
   AttackDistance: 3

@@ -20,6 +20,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Installers
     
         private void BindServices()
         {
+            Container.Bind<PauseService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<PlayerProgressService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<LevelProgressServiceResolver>()
                 .AsSingle()

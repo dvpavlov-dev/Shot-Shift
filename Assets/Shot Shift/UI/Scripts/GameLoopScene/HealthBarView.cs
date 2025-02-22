@@ -8,9 +8,11 @@ namespace Shot_Shift.UI.Scripts.GameLoopScene
         [SerializeField] private Image _healthBar;
 
         private float _maxHealth;
-        
-        public void SetupHealthBar(float maxHealth)
+        private bool _isLookAtCameraNeeded;
+
+        public void SetupHealthBar(float maxHealth, bool isLookAtCameraNeeded = false)
         {
+            _isLookAtCameraNeeded = isLookAtCameraNeeded;
             _maxHealth = maxHealth;
         }
         
@@ -26,6 +28,14 @@ namespace Shot_Shift.UI.Scripts.GameLoopScene
             }
             
             _healthBar.fillAmount = health / _maxHealth;
+        }
+
+        private void LateUpdate()
+        {
+            if (_isLookAtCameraNeeded && Camera.main is {} cameraMain)
+            {
+                transform.rotation = Quaternion.LookRotation(cameraMain.transform.forward);
+            }
         }
     }
 }

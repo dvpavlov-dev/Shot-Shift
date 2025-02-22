@@ -1,6 +1,7 @@
 using Shot_Shift.Actors.Weapon.Scripts;
 using Shot_Shift.Configs.Sources;
 using Shot_Shift.Infrastructure.Scripts.Factories;
+using Shot_Shift.UI.Scripts.GameLoopScene;
 using UnityEngine;
 
 namespace Shot_Shift.Actors.Enemy.Scripts
@@ -8,6 +9,8 @@ namespace Shot_Shift.Actors.Enemy.Scripts
     [RequireComponent(typeof(DamageController), typeof(EnemyAI))]
     public class Enemy : MonoBehaviour, IEnemy
     {
+        [SerializeField] private HealthBarView _healthBarView;
+        
         private IDamageable _damageController;
         private EnemyAI _enemyAI;
         private IActorsFactory _actorsFactory;
@@ -18,6 +21,9 @@ namespace Shot_Shift.Actors.Enemy.Scripts
             _damageController = GetComponent<DamageController>();
             _enemyAI = GetComponent<EnemyAI>();
 
+            _healthBarView.SetupHealthBar(enemyConfig.Health, true);
+            _damageController.Setup(enemyConfig.Health);
+            _damageController.OnHealthChanged += _healthBarView.UpdateHealthBar;
             _damageController.OnDeath += Dispose;
             
             _enemyAI.Initialize(enemyConfig, target);
@@ -25,6 +31,7 @@ namespace Shot_Shift.Actors.Enemy.Scripts
         
         private void Dispose()
         {
+            _damageController.OnHealthChanged -= _healthBarView.UpdateHealthBar;
             _damageController.OnDeath -= Dispose;
             _actorsFactory.DisposeEnemy(gameObject);
         }
