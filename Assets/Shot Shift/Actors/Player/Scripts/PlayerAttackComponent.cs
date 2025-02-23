@@ -1,4 +1,5 @@
 using Infrastructure;
+using Shot_Shift.Infrastructure.Scripts.Services;
 using UnityEngine;
 using Zenject;
 
@@ -11,16 +12,18 @@ namespace Shot_Shift.Actors.Player.Scripts
         public Transform shootingPoint;
         public GameObject bulletPrefab;
 
+        private IInputService _inputService;
+        private PauseService _pauseService;
+        
         private Vector3 movement;
         private Vector3 recoilVelocity;
-    
         private Rigidbody _rb;
-        private IInputService _inputService;
         private bool _isFire;
 
         [Inject]
-        private void Constructor(IInputService inputService)
+        private void Constructor(IInputService inputService, PauseService pauseService)
         {
+            _pauseService = pauseService;
             _inputService = inputService;
         }
         
@@ -31,7 +34,7 @@ namespace Shot_Shift.Actors.Player.Scripts
 
         private void Update()
         {
-            if (_inputService.Interact && !_isFire)
+            if (!_pauseService.IsPaused && _inputService.Interact && !_isFire)
             {
                 Shoot();
                 

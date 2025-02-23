@@ -13,9 +13,11 @@ namespace Shot_Shift.UI.Scripts.StartScene
         [SerializeField] private TMP_Text _titleText;
 
         private int _index;
+        private TypeCell _typeCell;
 
         public void SetupCell(int index, TypeCell typeCell)
         {
+            _typeCell = typeCell;
             _index = index;
             _titleText.text = (index + 1).ToString();
             
@@ -41,6 +43,11 @@ namespace Shot_Shift.UI.Scripts.StartScene
 
         public void SelectLevel()
         {
+            if (_typeCell == TypeCell.NOT_PASS)
+            {
+                return;
+            }
+            
             OnSelectedLevel?.Invoke(_index);
         }
     }

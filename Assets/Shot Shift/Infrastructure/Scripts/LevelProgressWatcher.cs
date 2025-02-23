@@ -4,7 +4,6 @@ using Shot_Shift.Actors.Weapon.Scripts;
 using Shot_Shift.Configs.Sources;
 using Shot_Shift.Infrastructure.Scripts.Factories;
 using Shot_Shift.Infrastructure.Scripts.Services;
-using Shot_Shift.Infrastructure.Scripts.States;
 using Shot_Shift.UI.Scripts.GameLoopScene;
 using UnityEngine;
 using Zenject;
@@ -13,28 +12,25 @@ namespace Shot_Shift.Infrastructure.Scripts
 {
     public class LevelProgressWatcher : MonoBehaviour
     {
-        [SerializeField] private HudView _hudView;
+        [SerializeField] private GameLoopUIController _gameLoopUIController;
         
-        public Action LevelFinished { get; set; }
-        public Action LevelLost { get; set; }
-        
-        private GameStateMachine _gameStateMachine;
         private EnemySpawnerService _enemySpawnerService = new();
         private IActorsFactory _actorsFactory;
         private Configs _configs;
         private PlayerProgressService _playerProgressService;
+        private PauseService _pauseService;
+
         private CompositeDisposable _disposable = new();
         private IDamageable _playerDamageable;
-        
         private IDisposable _timerObserver;
 
         [Inject]
-        private void Construct(GameStateMachine gameStateMachine, IActorsFactory actorsFactory, Configs configs, PlayerProgressService playerProgressService)
+        private void Construct(IActorsFactory actorsFactory, Configs configs, PlayerProgressService playerProgressService, PauseService pauseService)
         {
+            _pauseService = pauseService;
             _playerProgressService = playerProgressService;
             _configs = configs;
             _actorsFactory = actorsFactory;
-            _gameStateMachine = gameStateMachine;
         }
 
         public void RunLevel()
@@ -42,6 +38,7 @@ namespace Shot_Shift.Infrastructure.Scripts
             Debug.Log("LevelProgressWatcher.RunLevel");
 
             LevelsConfigSource.Level currentLevelConfig = _configs.LevelsConfig.levels[_playerProgressService.CurrentLevel];
+            _pauseService.IsPaused = false;
             
             HudSetup(currentLevelConfig);
             PlayerSetup();
@@ -50,7 +47,7 @@ namespace Shot_Shift.Infrastructure.Scripts
         
         private void HudSetup(LevelsConfigSource.Level currentLevelConfig)
         {
-            _hudView.SetupHud(_configs.PlayerConfig.Health, currentLevelConfig.IsTimerNeeded ? currentLevelConfig.TimerIntervalInSeconds : 0);
+            _gameLoopUIController.HudView.SetupHud(_configs.PlayerConfig.Health, currentLevelConfig.IsTimerNeeded ? currentLevelConfig.TimerIntervalInSeconds : 0);
 
             if (currentLevelConfig.IsTimerNeeded)
             {
@@ -94,12 +91,12 @@ namespace Shot_Shift.Infrastructure.Scripts
 
         private void OnPlayerHealthChanged(float health)
         {
-            _hudView.UpdateHealth(health);
+            _gameLoopUIController.HudView.UpdateHealth(health);
         }
 
         private void UpdateTimer(int seconds)
         {
-            _hudView.UpdateTimer(seconds);
+            _gameLoopUIController.HudView.UpdateTimer(seconds);
         }
         
         private void OnLevelLost()
@@ -107,6 +104,8 @@ namespace Shot_Shift.Infrastructure.Scripts
             Debug.Log("LevelProgressWatcher.LevelLost");
             
             _playerDamageable.OnDeath -= OnLevelLost;
+            _gameLoopUIController.ShowLoseWindow();
+            _pauseService.IsPaused = true;
         }
 
         private void OnLevelFinished()
@@ -115,7 +114,9 @@ namespace Shot_Shift.Infrastructure.Scripts
             
             _enemySpawnerService.LevelFinished -= OnLevelFinished;
             _playerProgressService.ChangeLevelData(_playerProgressService.CurrentLevel + 1);
-            _gameStateMachine.Enter<GameLoopState>();
+            
+            _gameLoopUIController.ShowWinningWindow();
+            _pauseService.IsPaused = true;
         }
 
         private void OnDestroy()

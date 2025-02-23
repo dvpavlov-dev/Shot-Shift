@@ -1,17 +1,27 @@
 using Shot_Shift.Actors.Weapon.Scripts;
 using Shot_Shift.Configs.Sources;
+using Shot_Shift.Infrastructure.Scripts.Services;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 namespace Shot_Shift.Actors.Enemy.Scripts
 {
     [RequireComponent(typeof(NavMeshAgent))]
     public class EnemyAI : MonoBehaviour
     {
+        private EnemyConfigSource _enemyConfig;
+        private PauseService _pauseService;
+        
         private Transform _target;
         private NavMeshAgent _agent;
-        private EnemyConfigSource _enemyConfig;
         private bool _isAttacking;
+
+        [Inject]
+        private void Constructor(PauseService pauseService)
+        {
+            _pauseService = pauseService;
+        }
         
         public void Initialize(EnemyConfigSource enemyConfig, GameObject target)
         {
@@ -25,6 +35,12 @@ namespace Shot_Shift.Actors.Enemy.Scripts
 
         private void Update()
         {
+            if(_pauseService.IsPaused)
+            {
+                _agent.ResetPath();
+                return;
+            }
+            
             if(_target != null && gameObject.activeSelf)
             {
                 _agent.SetDestination(_target.position);

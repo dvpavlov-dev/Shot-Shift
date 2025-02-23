@@ -7,11 +7,12 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
     {
         private Configs _configs;
         private const string CURRENT_LEVEL = "CurrentLevel";
+        private const string LAST_COMPLETED_LEVEL = "LastCompletedLevel";
         private const string COINS_COUNT = "CoinsCount";
         private const string HEALTH_UPGRADE = "HealthUpgrade";
         private const string DAMAGE_UPGRADE = "DamageUpgrade";
         private const string RECOIL_UPGRADE = "RecoilUpgrade";
-        
+
         public int CurrentLevel { get; private set; }
         public int LastCompletedLevel { get; private set; }
         public int CoinsCount { get; private set; }
@@ -43,11 +44,15 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
             {
                 LastCompletedLevel = currentLevel;
             }
+            
+            SaveData();
         }
 
         public void ChangeCoinsData(int coins)
         {
             CoinsCount = coins;
+            
+            SaveData();
         }
 
         public void ChangeUpgradeData(float healthUpgrade, float damageUpgrade, float recoilUpgrade)
@@ -55,22 +60,28 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
             HealthUpgrade = healthUpgrade;
             DamageUpgrade = damageUpgrade;
             RecoilUpgrade = recoilUpgrade;
+            
+            SaveData();
         }
 
-        public void SaveData()
+        private void SaveData()
         {
             PlayerPrefs.SetInt(CURRENT_LEVEL, CurrentLevel);
+            PlayerPrefs.SetInt(LAST_COMPLETED_LEVEL, LastCompletedLevel);
             PlayerPrefs.SetInt(COINS_COUNT, CoinsCount);
             PlayerPrefs.SetFloat(HEALTH_UPGRADE, HealthUpgrade);
             PlayerPrefs.SetFloat(DAMAGE_UPGRADE, DamageUpgrade);
             PlayerPrefs.SetFloat(RECOIL_UPGRADE, RecoilUpgrade);
             
             PlayerPrefs.Save();
+            
+            Debug.Log($"Data saved: CurrentLevel: {CurrentLevel}");
         }
 
-        public void LoadData()
+        private void LoadData()
         {
             CurrentLevel = PlayerPrefs.GetInt(CURRENT_LEVEL);
+            LastCompletedLevel = PlayerPrefs.GetInt(LAST_COMPLETED_LEVEL);
             CoinsCount = PlayerPrefs.GetInt(COINS_COUNT);
             HealthUpgrade = PlayerPrefs.GetFloat(HEALTH_UPGRADE);
             DamageUpgrade = PlayerPrefs.GetFloat(DAMAGE_UPGRADE);
