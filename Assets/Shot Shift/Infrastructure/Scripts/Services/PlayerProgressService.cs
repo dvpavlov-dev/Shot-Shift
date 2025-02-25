@@ -33,9 +33,9 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
 
         public void ChangeLevelData(int currentLevel)
         {
-            if (_configs.LevelsConfig.levels.Count < currentLevel)
+            if (_configs.LevelsConfig.Levels.Count < currentLevel)
             {
-                currentLevel = _configs.LevelsConfig.levels.Count - 1;
+                currentLevel = _configs.LevelsConfig.Levels.Count - 1;
             }
             
             CurrentLevel = currentLevel;

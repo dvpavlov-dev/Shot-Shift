@@ -37,7 +37,7 @@ namespace Shot_Shift.Infrastructure.Scripts
         {
             Debug.Log("LevelProgressWatcher.RunLevel");
 
-            LevelsConfigSource.Level currentLevelConfig = _configs.LevelsConfig.levels[_playerProgressService.CurrentLevel];
+            LevelsConfigSource.Level currentLevelConfig = _configs.LevelsConfig.Levels[_playerProgressService.CurrentLevel];
             _pauseService.IsPaused = false;
             
             HudSetup(currentLevelConfig);
@@ -57,7 +57,7 @@ namespace Shot_Shift.Infrastructure.Scripts
         
         private void EnemySpawnerSetup()
         {
-            _enemySpawnerService.SpawnEnemy(_actorsFactory, _configs.LevelsConfig.levels[_playerProgressService.CurrentLevel], _disposable);
+            _enemySpawnerService.SpawnEnemy(_actorsFactory, _configs.LevelsConfig.Levels[_playerProgressService.CurrentLevel], _disposable);
             _enemySpawnerService.LevelFinished += OnLevelFinished;
         }
         

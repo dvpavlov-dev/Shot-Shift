@@ -15,7 +15,7 @@ namespace Shot_Shift.Actors.Enemy.Scripts
         private EnemyAI _enemyAI;
         private IActorsFactory _actorsFactory;
         
-        public void Initialize(EnemyConfigSource enemyConfig, GameObject target, IActorsFactory actorsFactory)
+        public void Setup(EnemyConfigSource enemyConfig, GameObject target, IActorsFactory actorsFactory)
         {
             _actorsFactory = actorsFactory;
             _damageController = GetComponent<DamageController>();
@@ -26,7 +26,7 @@ namespace Shot_Shift.Actors.Enemy.Scripts
             _damageController.OnHealthChanged += _healthBarView.UpdateHealthBar;
             _damageController.OnDeath += Dispose;
             
-            _enemyAI.Initialize(enemyConfig, target);
+            _enemyAI.Setup(enemyConfig, target);
         }
         
         private void Dispose()
@@ -39,6 +39,6 @@ namespace Shot_Shift.Actors.Enemy.Scripts
     
     public interface IEnemy
     {
-        void Initialize(EnemyConfigSource enemyConfig, GameObject target, IActorsFactory actorsFactory);
+        void Setup(EnemyConfigSource enemyConfig, GameObject target, IActorsFactory actorsFactory);
     }
 }

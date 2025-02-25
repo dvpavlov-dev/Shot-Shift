@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaa8ffdf71370fe48bdac4e7631d7554, type: 3}
-  m_Name: PlayerConfig
+  m_Script: {fileID: 11500000, guid: d4bffdd8b6484cc1be4397d7f65def10, type: 3}
+  m_Name: SmgBulletConfig
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 7487676853077924971, guid: 9a7dde0b0f1106f458ed39641ee99875, type: 3}
-  _health: 100
+  _bulletPrefab: {fileID: 5472746190812495962, guid: 3710411b95a5d5c4bb7019ae44d73b76, type: 3}
+  _bulletDamage: 5
+  _bulletSpeed: 10
+  _bulletRange: 10

@@ -12,36 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27774c2fc70d4cb8ad5fccc8231a8ff7, type: 3}
   m_Name: LevelsConfig
   m_EditorClassIdentifier: 
-  levels:
-  - NameLevel: Level 1
-    EnemyCount: 2
-    IsTimerNeeded: 0
-    TimerIntervalInSeconds: 10
-  - NameLevel: Level 2
-    EnemyCount: 4
-    IsTimerNeeded: 0
-    TimerIntervalInSeconds: 0
-  - NameLevel: Level 3
-    EnemyCount: 6
-    IsTimerNeeded: 0
-    TimerIntervalInSeconds: 0
-  - NameLevel: Level 4
-    EnemyCount: 8
-    IsTimerNeeded: 0
-    TimerIntervalInSeconds: 0
-  - NameLevel: Level 5
-    EnemyCount: 10
-    IsTimerNeeded: 0
-    TimerIntervalInSeconds: 0
-  - NameLevel: Level 6
-    EnemyCount: 12
-    IsTimerNeeded: 0
-    TimerIntervalInSeconds: 0
-  - NameLevel: Level 6
-    EnemyCount: 12
-    IsTimerNeeded: 0
-    TimerIntervalInSeconds: 0
-  - NameLevel: Level 8
-    EnemyCount: 16
-    IsTimerNeeded: 1
-    TimerIntervalInSeconds: 0
+  _levels:
+  - _nameLevel: Level 1
+    _enemyCount: 2
+    _isTimerNeeded: 0
+    _timerIntervalInSeconds: 0
+  - _nameLevel: Level 2
+    _enemyCount: 4
+    _isTimerNeeded: 1
+    _timerIntervalInSeconds: 50
+  - _nameLevel: Level 3
+    _enemyCount: 6
+    _isTimerNeeded: 0
+    _timerIntervalInSeconds: 0
+  - _nameLevel: Level 4
+    _enemyCount: 8
+    _isTimerNeeded: 0
+    _timerIntervalInSeconds: 0
+  - _nameLevel: Level 5
+    _enemyCount: 10
+    _isTimerNeeded: 0
+    _timerIntervalInSeconds: 0
+  - _nameLevel: Level 6
+    _enemyCount: 12
+    _isTimerNeeded: 0
+    _timerIntervalInSeconds: 0
+  - _nameLevel: Level 7
+    _enemyCount: 14
+    _isTimerNeeded: 1
+    _timerIntervalInSeconds: 50
+  - _nameLevel: Level 8
+    _enemyCount: 16
+    _isTimerNeeded: 0
+    _timerIntervalInSeconds: 0

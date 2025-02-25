@@ -12,19 +12,19 @@ namespace Shot_Shift.Infrastructure.Scripts.States
         private readonly ILoadingCurtains _loadingCurtains;
         private readonly ISceneLoaderService _sceneLoaderService;
         private readonly IActorsFactory _actorsFactory;
-        private readonly IBulletsFactory _bulletsFactory;
+        private readonly IWeaponsFactory _weaponsFactory;
 
         public GameLoopState(ILevelProgressService levelProgressService, 
             ILoadingCurtains loadingCurtains, 
             ISceneLoaderService sceneLoaderService, 
             IActorsFactory actorsFactory,
-            IBulletsFactory bulletsFactory)
+            IWeaponsFactory weaponsFactory)
         {
             _levelProgressService = levelProgressService;
             _loadingCurtains = loadingCurtains;
             _sceneLoaderService = sceneLoaderService;
             _actorsFactory = actorsFactory;
-            _bulletsFactory = bulletsFactory;
+            _weaponsFactory = weaponsFactory;
         }
 
         public void Enter()
@@ -50,7 +50,7 @@ namespace Shot_Shift.Infrastructure.Scripts.States
             _actorsFactory.InitializeFactory().Subscribe(_ =>
             {
                 _loadingCurtains.UpdateDescriptionText("Loading bullets...");
-                _bulletsFactory.InitializeFactory().Subscribe(_ =>
+                _weaponsFactory.InitializeFactory().Subscribe(_ =>
                 {
                     Debug.Log("Метод 2 завершен!");
                     OnInitializedEnded();

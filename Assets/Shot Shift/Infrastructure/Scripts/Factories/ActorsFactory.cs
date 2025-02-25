@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using R3;
 using Shot_Shift.Actors.Enemy.Scripts;
+using Shot_Shift.Actors.Player.Scripts;
 using Shot_Shift.Actors.Weapon.Scripts;
 using Shot_Shift.Infrastructure.Scripts.Services;
 using UnityEngine;
@@ -45,7 +46,8 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
         public GameObject CreatePlayer()
         {
             _player = _container.InstantiatePrefab(_configs.PlayerConfig.PlayerPrefab ,new Vector3(0, 0, 0), Quaternion.identity, _containerForEnemy);
-            _player.GetComponent<IDamageable>().Setup(_configs.PlayerConfig.Health);
+            _player.GetComponent<Player>().Setup(_configs.PlayerConfig);
+            
             return _player;
         }
 
@@ -55,7 +57,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
             GameObject target = _player != null ? _player : CreatePlayer();
             
             enemy.transform.position = new Vector3(target.transform.position.x + DISTANCE_BEHIND_CAMERA, 0, 0);
-            enemy.GetComponent<IEnemy>().Initialize(_configs.EnemyConfig, target, this);
+            enemy.GetComponent<IEnemy>().Setup(_configs.EnemyConfig, target, this);
             enemy.SetActive(true);
 
             return enemy;
@@ -72,7 +74,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
             _containerForEnemy = new GameObject("EnemiesPool").transform;
             _enemiesPool.Clear();
             
-            for (int i = 0; i < _configs.LevelsConfig.levels[_playerProgress.CurrentLevel].EnemyCount; i++)
+            for (int i = 0; i < _configs.LevelsConfig.Levels[_playerProgress.CurrentLevel].EnemyCount; i++)
             {
                 GameObject enemy = CreateEnemy();
                 enemy.SetActive(false);

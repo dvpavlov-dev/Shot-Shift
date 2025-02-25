@@ -121,6 +121,7 @@ MonoBehaviour:
   _playerConfig: {fileID: 11400000, guid: fd56944669e9e5e46801ff0bf6427da6, type: 2}
   _enemyConfig: {fileID: 11400000, guid: 19303663a01c41f418c53eebea66d3e5, type: 2}
   _levelsConfig: {fileID: 11400000, guid: 97a0be49e2cef8b49a42d0154bbe3d0d, type: 2}
+  _weaponsConfig: {fileID: 11400000, guid: 76114a3d4ea812548b08e5db66fa1fbb, type: 2}
 --- !u!1001 &8239752844226139109
 PrefabInstance:
   m_ObjectHideFlags: 0

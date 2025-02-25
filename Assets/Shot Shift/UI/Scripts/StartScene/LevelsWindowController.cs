@@ -29,7 +29,7 @@ namespace Shot_Shift.UI.Scripts.StartScene
         {
             ClearListCells();
 
-            for (int i = 0; i < _configs.LevelsConfig.levels.Count; i++)
+            for (int i = 0; i < _configs.LevelsConfig.Levels.Count; i++)
             {
                 GameObject level = Instantiate(_levelsCellPrefab, _levelsContainer.transform);
                 _levelCells.Add(level);

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Shot_Shift.Infrastructure.Scripts.Services;
+using UnityEngine;
 
 namespace Infrastructure
 {
@@ -10,6 +11,8 @@ namespace Infrastructure
         public override Vector2 MoveAxis => UnityMoveAxis();
         public override Vector2 RotateAxis => UnityRotateAxis();
         public override bool Interact => Input.GetButtonDown(INTERACT_BUTTON);
+        public override bool SwitchWeapon => Input.GetButtonDown(SWITCH_WEAPON);
+
 
         private static Vector2 UnityMoveAxis() => new(Input.GetAxis(HORIZONTAL), Input.GetAxis(VERTICAL));
         private static Vector2 UnityRotateAxis() => new Vector2(Input.GetAxis(MOUSE_X), Input.GetAxis(MOUSE_Y));

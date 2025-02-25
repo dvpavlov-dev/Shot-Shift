@@ -21,6 +21,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Installers
         private void BindServices()
         {
             Container.Bind<PauseService>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<WeaponService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<PlayerProgressService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<LevelProgressServiceResolver>()
                 .AsSingle()
@@ -34,7 +35,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Installers
         {
             Container.BindInterfacesAndSelfTo<StateFactory>().AsSingle();
             Container.BindInterfacesTo<ActorsFactory>().AsSingle().NonLazy();
-            Container.BindInterfacesTo<BulletsFactory>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<WeaponsFactory>().AsSingle().NonLazy();
         }
     
         private void BindInputService()

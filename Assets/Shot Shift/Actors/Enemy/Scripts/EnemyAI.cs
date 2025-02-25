@@ -23,7 +23,7 @@ namespace Shot_Shift.Actors.Enemy.Scripts
             _pauseService = pauseService;
         }
         
-        public void Initialize(EnemyConfigSource enemyConfig, GameObject target)
+        public void Setup(EnemyConfigSource enemyConfig, GameObject target)
         {
             _enemyConfig = enemyConfig;
             _target = target.transform;
