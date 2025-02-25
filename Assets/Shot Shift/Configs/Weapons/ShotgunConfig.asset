@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cac95caa7e5479e99cb3aa4906d37fe, type: 3}
+  m_Name: ShotgunConfig
+  m_EditorClassIdentifier: 
+  _weaponPref: {fileID: 8387512307947781883, guid: e25007f0ce0ce434f913ba1301a8ef5d, type: 3}
+  _recoilForce: 10
+  _shotsPerSeconds: 1
+  _openAfterLevel: 3
+  _bulletConfig: {fileID: 11400000, guid: f35d08edf5c6c2a4b84b93197463222f, type: 2}
+  _spread: 15
+  _numberOfBilletsFired: 5

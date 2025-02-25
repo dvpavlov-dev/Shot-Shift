@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07982869a27740a39096f0405713f599, type: 3}
+  m_Script: {fileID: 11500000, guid: 0dc00dffa14f40838d70eed5665ba760, type: 3}
   m_Name: RifleConfig
   m_EditorClassIdentifier: 
   _weaponPref: {fileID: 4289526802915186466, guid: e43fab687d02aa2459803578d91891ef, type: 3}
-  _recoilForce: 5
+  _recoilForce: 3
   _shotsPerSeconds: 5
   _openAfterLevel: 1
   _bulletConfig: {fileID: 11400000, guid: d3d3cca0985a230448e3a853c88733ec, type: 2}

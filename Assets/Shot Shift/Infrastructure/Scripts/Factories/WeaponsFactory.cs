@@ -100,7 +100,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
 
         private GameObject CreateBullet(Transform containerForBullets)
         {
-            return Object.Instantiate(_configs.WeaponsConfig.BulletPref, containerForBullets);
+            return _container.InstantiatePrefab(_configs.WeaponsConfig.BulletPref, containerForBullets);
         }
     }
 }

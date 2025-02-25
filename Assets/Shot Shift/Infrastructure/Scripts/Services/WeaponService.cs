@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Shot_Shift.Actors.Weapon.Scripts;
+using Shot_Shift.Configs.Sources;
+using UnityEngine;
 using Zenject;
 
 namespace Shot_Shift.Infrastructure.Scripts.Services
@@ -22,11 +24,13 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
         {
             _activeWeapons.Clear();
 
-            foreach (IWeaponController weapon in _configs.WeaponsConfig.Weapons)
+            foreach (GameObject weapon in _configs.WeaponsConfig.Weapons)
             {
-                if (weapon.WeaponConfig.OpenAfterLevel <=_playerProgressService.LastCompletedLevel )
+                IWeaponController weaponController = weapon.GetComponent<IWeaponController>();
+                
+                if (weaponController != null && weaponController.WeaponConfig.OpenAfterLevel <=_playerProgressService.LastCompletedLevel )
                 {
-                    _activeWeapons.Add(weapon);
+                    _activeWeapons.Add(weaponController);
                 }
             }
 

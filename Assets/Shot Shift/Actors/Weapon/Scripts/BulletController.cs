@@ -1,4 +1,6 @@
+using Shot_Shift.Infrastructure.Scripts.Factories;
 using UnityEngine;
+using Zenject;
 
 namespace Shot_Shift.Actors.Weapon.Scripts
 {
@@ -7,6 +9,13 @@ namespace Shot_Shift.Actors.Weapon.Scripts
         private float _damage;
         private float _speed;
         private float _range;
+        private IWeaponsFactory _weaponsFactory;
+
+        [Inject]
+        private void Constructor(IWeaponsFactory weaponsFactory)
+        {
+            _weaponsFactory = weaponsFactory;
+        }
         
         public void Setup(float damage, float speed, float range)
         {
@@ -14,10 +23,10 @@ namespace Shot_Shift.Actors.Weapon.Scripts
             _speed = speed;
             _range = range;
 
-            Destroy(gameObject, _range / _speed);
+            Invoke(nameof(Dispose), _range / _speed);
         }
 
-        void Update()
+        private void Update()
         {
             transform.Translate(transform.right * Time.deltaTime * _speed, Space.World);
         }
@@ -29,6 +38,11 @@ namespace Shot_Shift.Actors.Weapon.Scripts
                 damageable.TakeDamage(_damage);
                 Destroy(gameObject);
             }
+        }
+
+        private void Dispose()
+        {
+            _weaponsFactory.DisposeBullet(gameObject);
         }
     }
 }

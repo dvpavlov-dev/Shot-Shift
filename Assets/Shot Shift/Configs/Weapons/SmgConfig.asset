@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SmgConfig
   m_EditorClassIdentifier: 
   _weaponPref: {fileID: 4662059789416441764, guid: 226b711c48bae5f40aa454d5d4079a6c, type: 3}
-  _recoilForce: 1
+  _recoilForce: 0.5
   _shotsPerSeconds: 20
   _openAfterLevel: 0
   _bulletConfig: {fileID: 11400000, guid: ff41c0680b2d37846b4ad2f17def8aee, type: 2}

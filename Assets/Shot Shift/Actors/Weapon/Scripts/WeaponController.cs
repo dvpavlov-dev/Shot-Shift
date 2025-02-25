@@ -5,12 +5,12 @@ using Zenject;
 
 namespace Shot_Shift.Actors.Weapon.Scripts
 {
-    public class WeaponController : MonoBehaviour, IWeaponController
+    public class WeaponController<TConfig> : MonoBehaviour, IWeaponController where TConfig : WeaponConfigSource
     {
-        [SerializeField] private WeaponConfigSource _weaponConfig;
-        [SerializeField] private Transform _shootPoint;
+        [SerializeField] protected TConfig _weaponConfig;
+        [SerializeField] protected Transform _shootPoint;
         
-        private IWeaponsFactory _weaponsFactory;
+        protected IWeaponsFactory _weaponsFactory;
 
         public WeaponConfigSource WeaponConfig => _weaponConfig;
 
@@ -20,7 +20,7 @@ namespace Shot_Shift.Actors.Weapon.Scripts
             _weaponsFactory = weaponsFactory;
         }
         
-        public Vector3 FireWithRecoil()
+        public virtual Vector3 FireWithRecoil()
         {
             GameObject bulletPref = _weaponsFactory.GetBullet();
             bulletPref.transform.position = _shootPoint.position;
@@ -34,7 +34,7 @@ namespace Shot_Shift.Actors.Weapon.Scripts
             return recoilDirection * _weaponConfig.RecoilForce;
         }
     }
-    
+
     public interface IWeaponController
     {
         Vector3 FireWithRecoil();
