@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fc9062b694a912498e3132e5328e448, type: 3}
+  m_Name: DropsConfig
+  m_EditorClassIdentifier: 
+  _medkitDropPrefab: {fileID: 2583471905434447600, guid: c268f99f15725bd40a9e60609eb044da, type: 3}
+  _coinsDropPrefab: {fileID: 2807938450713922641, guid: f977f9280493df545830e04b0c81e91c, type: 3}

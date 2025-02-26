@@ -57,7 +57,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
             GameObject target = _player != null ? _player : CreatePlayer();
             
             enemy.transform.position = new Vector3(target.transform.position.x + DISTANCE_BEHIND_CAMERA, 0, 0);
-            enemy.GetComponent<IEnemy>().Setup(_configs.EnemyConfig, target, this);
+            enemy.GetComponent<IEnemy>().Setup(_configs.EnemyConfig, target);
             enemy.SetActive(true);
 
             return enemy;

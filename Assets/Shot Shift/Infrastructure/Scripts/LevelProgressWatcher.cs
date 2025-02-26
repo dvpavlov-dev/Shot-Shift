@@ -66,7 +66,7 @@ namespace Shot_Shift.Infrastructure.Scripts
             GameObject player = _actorsFactory.CreatePlayer();
             _playerDamageable = player.GetComponent<IDamageable>();
             _playerDamageable.OnDeath += OnLevelLost;
-            _playerDamageable.OnHealthChanged = OnPlayerHealthChanged;
+            _playerDamageable.OnHealthChanged += OnPlayerHealthChanged;
         }
 
         private void StartTimer(int startSeconds)
@@ -82,7 +82,7 @@ namespace Shot_Shift.Infrastructure.Scripts
                     else
                     {
                         UpdateTimer(0);
-                        OnLevelLost();
+                        OnLevelLost(_playerDamageable);
                         _timerObserver.Dispose();
                     }
                 })
@@ -99,11 +99,12 @@ namespace Shot_Shift.Infrastructure.Scripts
             _gameLoopUIController.HudView.UpdateTimer(seconds);
         }
         
-        private void OnLevelLost()
+        private void OnLevelLost(IDamageable playerDamageable)
         {
             Debug.Log("LevelProgressWatcher.LevelLost");
             
-            _playerDamageable.OnDeath -= OnLevelLost;
+            playerDamageable.OnDeath -= OnLevelLost;
+            playerDamageable.OnHealthChanged -= OnPlayerHealthChanged;
             _gameLoopUIController.ShowLoseWindow();
             _pauseService.IsPaused = true;
         }

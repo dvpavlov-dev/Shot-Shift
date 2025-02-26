@@ -36,6 +36,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Installers
             Container.BindInterfacesAndSelfTo<StateFactory>().AsSingle();
             Container.BindInterfacesTo<ActorsFactory>().AsSingle().NonLazy();
             Container.BindInterfacesTo<WeaponsFactory>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<DropFactory>().AsSingle().NonLazy();
         }
     
         private void BindInputService()

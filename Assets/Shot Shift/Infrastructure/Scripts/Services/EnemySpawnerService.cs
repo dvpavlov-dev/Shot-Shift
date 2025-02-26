@@ -43,8 +43,10 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
                 .AddTo(disposable);
         }
 
-        private void OnDeathEnemy()
+        private void OnDeathEnemy(IDamageable enemyDamageable)
         {
+            enemyDamageable.OnDeath -= OnDeathEnemy;
+            
             if (--_totalEnemyCount == 0)
             {
                 LevelFinished?.Invoke();
