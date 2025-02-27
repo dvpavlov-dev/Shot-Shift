@@ -8,7 +8,8 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
     {
         Observable<Unit> InitializeFactory();
         void CreateWeapons(Transform weaponSpot);
-        IWeaponController GetWeapon();
+        IWeaponController GetFirstWeapon();
+        IWeaponController GetNextWeapon();
         GameObject GetBullet();
         void DisposeBullet(GameObject bullet);
     }

@@ -1,4 +1,5 @@
 using Shot_Shift.Configs.Sources;
+using Shot_Shift.Gameplay.Weapon.Scripts;
 using UnityEngine;
 namespace Shot_Shift.Actors.Weapon.Scripts
 {

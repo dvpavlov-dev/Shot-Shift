@@ -1,4 +1,4 @@
-using Shot_Shift.UI.Scripts.StartScene;
+using TMPro;
 using UnityEngine;
 
 namespace Shot_Shift.UI.Scripts.GameLoopScene
@@ -7,6 +7,7 @@ namespace Shot_Shift.UI.Scripts.GameLoopScene
     {
         [SerializeField] private HealthBarView _healthBarView;
         [SerializeField] private TimerView _timerView;
+        [SerializeField] private TMP_Text _coinsText;
 
         public void SetupHud(float maxHealth, int timerSeconds)
         {
@@ -22,6 +23,11 @@ namespace Shot_Shift.UI.Scripts.GameLoopScene
         public void UpdateTimer(int seconds)
         {
             _timerView.UpdateTimer(seconds);
+        }
+
+        public void UpdateCoins(int coins)
+        {
+            _coinsText.text = coins.ToString();
         }
     }
 }

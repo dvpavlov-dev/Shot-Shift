@@ -48,6 +48,8 @@ namespace Shot_Shift.Infrastructure.Scripts
         private void HudSetup(LevelsConfigSource.Level currentLevelConfig)
         {
             _gameLoopUIController.HudView.SetupHud(_configs.PlayerConfig.Health, currentLevelConfig.IsTimerNeeded ? currentLevelConfig.TimerIntervalInSeconds : 0);
+            _playerProgressService.OnCoinsChanged += UpdateCoins;
+            UpdateCoins();
 
             if (currentLevelConfig.IsTimerNeeded)
             {
@@ -98,6 +100,11 @@ namespace Shot_Shift.Infrastructure.Scripts
         {
             _gameLoopUIController.HudView.UpdateTimer(seconds);
         }
+
+        private void UpdateCoins()
+        {
+            _gameLoopUIController.HudView.UpdateCoins(_playerProgressService.CoinsCount);
+        }
         
         private void OnLevelLost(IDamageable playerDamageable)
         {
@@ -122,6 +129,8 @@ namespace Shot_Shift.Infrastructure.Scripts
 
         private void OnDestroy()
         {
+            _playerProgressService.OnCoinsChanged -= UpdateCoins;
+            
             _timerObserver?.Dispose();
             _disposable.Dispose();
         }

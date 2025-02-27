@@ -13,19 +13,22 @@ namespace Shot_Shift.Actors.Player.Scripts
         
         private IInputService _inputService;
         private PauseService _pauseService;
-        
+        private IWeaponsFactory _weaponsFactory;
+        private AbilitiesService _abilitiesService;
+
         private IWeaponController _currentWeapon;
         private int _currentWeaponId;
         private Rigidbody _rb;
         private bool _isFire;
-        private IWeaponsFactory _weaponsFactory;
 
         [Inject]
         private void Constructor(
             IInputService inputService, 
             PauseService pauseService, 
-            IWeaponsFactory weaponsFactory)
+            IWeaponsFactory weaponsFactory,
+            AbilitiesService abilitiesService)
         {
+            _abilitiesService = abilitiesService;
             _weaponsFactory = weaponsFactory;
             _pauseService = pauseService;
             _inputService = inputService;
@@ -35,16 +38,13 @@ namespace Shot_Shift.Actors.Player.Scripts
         {
             _rb = GetComponent<Rigidbody>();
             _weaponsFactory.CreateWeapons(_weaponSpot);
-            
-            SwitchWeapon();
+
+            _currentWeapon = _weaponsFactory.GetFirstWeapon();
         }
 
         private void SwitchWeapon()
         {
-            if (_weaponsFactory.GetWeapon() is {} weapon)
-            {
-                _currentWeapon = weapon;
-            }
+            _currentWeapon = _weaponsFactory.GetNextWeapon();
         }
 
         private void Update()
@@ -64,8 +64,18 @@ namespace Shot_Shift.Actors.Player.Scripts
             {
                 SwitchWeapon();
             }
+
+            if (_inputService.UseAbility)
+            {
+                UseBulletTime();
+            }
         }
         
+        private void UseBulletTime()
+        {
+            _abilitiesService.ActivateBulletTime();
+        }
+
         private void FireIsOver()
         {
             _isFire = false;

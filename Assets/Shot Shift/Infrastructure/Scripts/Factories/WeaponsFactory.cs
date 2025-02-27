@@ -48,24 +48,21 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
             }
         }
 
-        public IWeaponController GetWeapon()
+        public IWeaponController GetFirstWeapon()
         {
-            if(_weapons.Count == 0) 
-                return null;
-
-            foreach (GameObject weapon in _weapons)
-            {
-                weapon.SetActive(false);
-            }
+            IWeaponController currentWeapon = GetWeapon(0);
             
-            GameObject currentWeapon = _weapons[_currentWeaponId];
-            currentWeapon.SetActive(true);
-
-            _currentWeaponId = _currentWeaponId + 1 < _weapons.Count ? _currentWeaponId + 1 : 0;
-
-            return currentWeapon.GetComponent<IWeaponController>();
+            return currentWeapon;
         }
 
+        public IWeaponController GetNextWeapon()
+        {
+            IWeaponController currentWeapon = GetWeapon(_currentWeaponId);
+            _currentWeaponId = _currentWeaponId + 1 < _weapons.Count ? _currentWeaponId + 1 : 0;
+            
+            return currentWeapon;
+        }
+        
         public GameObject GetBullet()
         {
             GameObject bullet = _bulletsPool.Count == 0 ? CreateBullet(_containerForBullets) : _bulletsPool.Dequeue();
@@ -77,6 +74,22 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
         {
             bullet.SetActive(false);
             _bulletsPool.Enqueue(bullet);
+        }
+        
+        private IWeaponController GetWeapon(int weaponId)
+        {
+            if(_weapons.Count == 0) 
+                return null;
+
+            foreach (GameObject weapon in _weapons)
+            {
+                weapon.SetActive(false);
+            }
+            
+            var currentWeapon = _weapons[weaponId];
+            currentWeapon.SetActive(true);
+            
+            return currentWeapon.GetComponent<IWeaponController>();
         }
 
         private async ValueTask CreateBulletsPool(CancellationToken cancellationToken)

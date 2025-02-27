@@ -8,5 +8,6 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
         public Vector2 RotateAxis { get; }
         public bool Interact { get; }
         public bool SwitchWeapon { get; }
+        bool UseAbility { get; }
     }
 }

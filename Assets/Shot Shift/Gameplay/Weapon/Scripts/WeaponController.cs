@@ -1,4 +1,5 @@
 using Shot_Shift.Configs.Sources;
+using Shot_Shift.Gameplay.Weapon.Scripts;
 using Shot_Shift.Infrastructure.Scripts.Factories;
 using UnityEngine;
 using Zenject;

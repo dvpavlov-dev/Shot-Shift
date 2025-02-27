@@ -18,7 +18,7 @@ namespace Shot_Shift.Gameplay.Drop.Scripts
         {
             if (actor.CompareTag("Player"))
             {
-                _playerProgressService.ChangeCoinsData(_playerProgressService.CoinsCount + 10);
+                _playerProgressService.TryChangeCoinsData(10);
                 Destroy(gameObject);
             }
         }

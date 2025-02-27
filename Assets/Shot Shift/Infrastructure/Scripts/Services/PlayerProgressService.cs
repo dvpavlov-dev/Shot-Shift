@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using Zenject;
+using IInitializable = Zenject.IInitializable;
 
 namespace Shot_Shift.Infrastructure.Scripts.Services
 {
@@ -19,6 +21,9 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
         public float HealthUpgrade { get; private set; }
         public float DamageUpgrade { get; private set; }
         public float RecoilUpgrade { get; private set; }
+
+        public event Action OnCoinsChanged;
+        public event Action OnUpgradesChanged;
 
         [Inject]
         private void Construct(Configs configs)
@@ -48,11 +53,19 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
             SaveData();
         }
 
-        public void ChangeCoinsData(int coins)
+        public bool TryChangeCoinsData(int value)
         {
-            CoinsCount = coins;
+            if(CoinsCount + value > 0)
+            {
+                CoinsCount += value;
+                OnCoinsChanged?.Invoke();
+
+                SaveData();
+                
+                return true;
+            }
             
-            SaveData();
+            return false;
         }
 
         public void ChangeUpgradeData(float healthUpgrade, float damageUpgrade, float recoilUpgrade)
@@ -60,6 +73,8 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
             HealthUpgrade = healthUpgrade;
             DamageUpgrade = damageUpgrade;
             RecoilUpgrade = recoilUpgrade;
+            
+            OnUpgradesChanged?.Invoke();
             
             SaveData();
         }

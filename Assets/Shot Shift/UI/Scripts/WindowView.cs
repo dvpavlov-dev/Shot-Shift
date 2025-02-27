@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using Zenject;
 
-namespace Shot_Shift.UI.Scripts.StartScene
+namespace Shot_Shift.UI.Scripts
 {
     public class WindowView : MonoBehaviour
     {

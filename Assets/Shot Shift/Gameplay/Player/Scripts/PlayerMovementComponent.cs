@@ -1,9 +1,8 @@
-﻿using Infrastructure;
-using Shot_Shift.Infrastructure.Scripts.Services;
+﻿using Shot_Shift.Infrastructure.Scripts.Services;
 using UnityEngine;
 using Zenject;
 
-namespace Shot_Shift.Actors.Player.Scripts
+namespace Shot_Shift.Gameplay.Player.Scripts
 {
     public class PlayerMovementComponent : MonoBehaviour
     {

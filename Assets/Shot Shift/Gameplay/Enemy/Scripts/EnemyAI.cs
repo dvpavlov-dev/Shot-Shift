@@ -12,14 +12,16 @@ namespace Shot_Shift.Actors.Enemy.Scripts
     {
         private EnemyConfigSource _enemyConfig;
         private PauseService _pauseService;
-        
+        private AbilitiesService _abilitiesService;
+
         private Transform _target;
         private NavMeshAgent _agent;
         private bool _isAttacking;
 
         [Inject]
-        private void Constructor(PauseService pauseService)
+        private void Constructor(PauseService pauseService, AbilitiesService abilitiesService)
         {
+            _abilitiesService = abilitiesService;
             _pauseService = pauseService;
         }
         
@@ -40,6 +42,8 @@ namespace Shot_Shift.Actors.Enemy.Scripts
                 _agent.ResetPath();
                 return;
             }
+
+            _agent.speed = _enemyConfig.Speed * _abilitiesService.SpeedCoefficient;
             
             if(_target != null && gameObject.activeSelf)
             {

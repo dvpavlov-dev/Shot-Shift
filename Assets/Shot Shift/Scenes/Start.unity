@@ -203,14 +203,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 341110392}
-        m_TargetAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.StartMenuController,
+        m_TargetAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.StartMenuUIController,
           Assembly-CSharp
         m_MethodName: SelectWindow
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1538244002}
-          m_ObjectArgumentAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.WindowView,
-            Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Shot_Shift.UI.Scripts.WindowView, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1651,14 +1650,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 341110392}
-        m_TargetAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.StartMenuController,
+        m_TargetAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.StartMenuUIController,
           Assembly-CSharp
         m_MethodName: SelectWindow
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1424715830}
-          m_ObjectArgumentAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.WindowView,
-            Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Shot_Shift.UI.Scripts.WindowView, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2179,14 +2177,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 341110392}
-        m_TargetAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.StartMenuController,
+        m_TargetAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.StartMenuUIController,
           Assembly-CSharp
         m_MethodName: SelectWindow
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1424715830}
-          m_ObjectArgumentAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.WindowView,
-            Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Shot_Shift.UI.Scripts.WindowView, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3399,14 +3396,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 341110392}
-        m_TargetAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.StartMenuController,
+        m_TargetAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.StartMenuUIController,
           Assembly-CSharp
         m_MethodName: SelectWindow
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1424715830}
-          m_ObjectArgumentAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.WindowView,
-            Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Shot_Shift.UI.Scripts.WindowView, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3534,14 +3530,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 341110392}
-        m_TargetAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.StartMenuController,
+        m_TargetAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.StartMenuUIController,
           Assembly-CSharp
         m_MethodName: SelectWindow
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 466205666}
-          m_ObjectArgumentAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.WindowView,
-            Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Shot_Shift.UI.Scripts.WindowView, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4468,14 +4463,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 341110392}
-        m_TargetAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.StartMenuController,
+        m_TargetAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.StartMenuUIController,
           Assembly-CSharp
         m_MethodName: SelectWindow
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 242253175}
-          m_ObjectArgumentAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.WindowView,
-            Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Shot_Shift.UI.Scripts.WindowView, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
