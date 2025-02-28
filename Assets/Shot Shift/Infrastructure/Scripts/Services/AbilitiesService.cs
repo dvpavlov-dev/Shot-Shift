@@ -26,7 +26,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
         
         public void ActivateBulletTime()
         {
-            if (SpeedCoefficient >= 1 && _playerProgressService.TryChangeCoinsData(-_bulletTimeConfig.Cost))
+            if (SpeedCoefficient >= 1 && _playerProgressService.TryReduceCoinsData(_bulletTimeConfig.Cost))
             {
                 SpeedCoefficient = 1 - _bulletTimeConfig.SlowdownInPercent / 100;
 

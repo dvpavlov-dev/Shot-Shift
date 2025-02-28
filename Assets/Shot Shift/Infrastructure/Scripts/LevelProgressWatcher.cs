@@ -47,7 +47,10 @@ namespace Shot_Shift.Infrastructure.Scripts
         
         private void HudSetup(LevelsConfigSource.Level currentLevelConfig)
         {
-            _gameLoopUIController.HudView.SetupHud(_configs.PlayerConfig.Health, currentLevelConfig.IsTimerNeeded ? currentLevelConfig.TimerIntervalInSeconds : 0);
+            _gameLoopUIController.HudView.SetupHud(
+                _configs.PlayerConfig.Health * _playerProgressService.HealthUpgrade, 
+                currentLevelConfig.IsTimerNeeded ? currentLevelConfig.TimerIntervalInSeconds : 0);
+            
             _playerProgressService.OnCoinsChanged += UpdateCoins;
             UpdateCoins();
 

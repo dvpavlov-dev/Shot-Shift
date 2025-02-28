@@ -50,17 +50,14 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
 
         public IWeaponController GetFirstWeapon()
         {
-            IWeaponController currentWeapon = GetWeapon(0);
-            
-            return currentWeapon;
+            return GetWeapon(0);
         }
 
         public IWeaponController GetNextWeapon()
         {
-            IWeaponController currentWeapon = GetWeapon(_currentWeaponId);
             _currentWeaponId = _currentWeaponId + 1 < _weapons.Count ? _currentWeaponId + 1 : 0;
             
-            return currentWeapon;
+            return GetWeapon(_currentWeaponId);
         }
         
         public GameObject GetBullet()

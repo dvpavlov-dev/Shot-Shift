@@ -15,8 +15,7 @@ namespace Shot_Shift.Actors.Weapon.Scripts
                 bulletPref.transform.Rotate(new Vector3(360f/_weaponConfig.NumberOfBilletsFired * i, 0, 15));
                 bulletPref.SetActive(true);
             
-                BulletController bullet = bulletPref.GetComponent<BulletController>();
-                bullet.Setup(_weaponConfig.BulletConfig.BulletDamage, _weaponConfig.BulletConfig.BulletSpeed, _weaponConfig.BulletConfig.BulletRange);
+                SetupBullet(bulletPref);
             }
             
             Vector3 recoilDirection = -_shootPoint.right;

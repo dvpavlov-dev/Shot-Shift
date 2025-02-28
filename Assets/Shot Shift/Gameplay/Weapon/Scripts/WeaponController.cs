@@ -1,6 +1,7 @@
 using Shot_Shift.Configs.Sources;
 using Shot_Shift.Gameplay.Weapon.Scripts;
 using Shot_Shift.Infrastructure.Scripts.Factories;
+using Shot_Shift.Infrastructure.Scripts.Services;
 using UnityEngine;
 using Zenject;
 
@@ -12,12 +13,14 @@ namespace Shot_Shift.Actors.Weapon.Scripts
         [SerializeField] protected Transform _shootPoint;
         
         protected IWeaponsFactory _weaponsFactory;
+        private PlayerProgressService _playerProgressService;
 
         public WeaponConfigSource WeaponConfig => _weaponConfig;
 
         [Inject]
-        private void Constructor(IWeaponsFactory weaponsFactory)
+        private void Constructor(IWeaponsFactory weaponsFactory, PlayerProgressService playerProgressService)
         {
+            _playerProgressService = playerProgressService;
             _weaponsFactory = weaponsFactory;
         }
         
@@ -28,11 +31,16 @@ namespace Shot_Shift.Actors.Weapon.Scripts
             bulletPref.transform.rotation = _shootPoint.rotation;
             bulletPref.SetActive(true);
             
-            BulletController bullet = bulletPref.GetComponent<BulletController>();
-            bullet.Setup(_weaponConfig.BulletConfig.BulletDamage, _weaponConfig.BulletConfig.BulletSpeed, _weaponConfig.BulletConfig.BulletRange);
+            SetupBullet(bulletPref);
 
             Vector3 recoilDirection = -_shootPoint.right;
-            return recoilDirection * _weaponConfig.RecoilForce;
+            return recoilDirection * (_weaponConfig.RecoilForce * _playerProgressService.RecoilUpgrade);
+        }
+        
+        protected void SetupBullet(GameObject bulletPref)
+        {
+            BulletController bullet = bulletPref.GetComponent<BulletController>();
+            bullet.Setup(_weaponConfig.BulletConfig.BulletDamage * _playerProgressService.DamageUpgrade, _weaponConfig.BulletConfig.BulletSpeed, _weaponConfig.BulletConfig.BulletRange);
         }
     }
 

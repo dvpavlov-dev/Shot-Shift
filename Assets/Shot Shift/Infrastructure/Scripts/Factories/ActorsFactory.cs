@@ -5,6 +5,7 @@ using R3;
 using Shot_Shift.Actors.Enemy.Scripts;
 using Shot_Shift.Actors.Player.Scripts;
 using Shot_Shift.Actors.Weapon.Scripts;
+using Shot_Shift.Gameplay.Player.Scripts;
 using Shot_Shift.Infrastructure.Scripts.Services;
 using UnityEngine;
 using Zenject;
