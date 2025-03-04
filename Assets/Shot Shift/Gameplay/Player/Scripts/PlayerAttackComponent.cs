@@ -1,4 +1,4 @@
-using Shot_Shift.Actors.Weapon.Scripts;
+using Shot_Shift.Gameplay.Weapon.Scripts;
 using Shot_Shift.Infrastructure.Scripts.Factories;
 using Shot_Shift.Infrastructure.Scripts.Services;
 using UnityEngine;

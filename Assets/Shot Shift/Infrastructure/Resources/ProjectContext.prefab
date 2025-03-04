@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _configs: {fileID: 2105007863657938599}
+  _clickSoundService: {fileID: 0}
 --- !u!114 &2105007863657938599
 MonoBehaviour:
   m_ObjectHideFlags: 0

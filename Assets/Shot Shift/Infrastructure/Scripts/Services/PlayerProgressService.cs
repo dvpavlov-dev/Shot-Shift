@@ -140,7 +140,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Services
             // _healthLevel = Math.Max(PlayerPrefs.GetInt(HEALTH_UPGRADE), 1);
             
             CurrentLevel = 0;
-            LastCompletedLevel = 0;
+            LastCompletedLevel = 4;
             CoinsCount = 10000;
             _damageLevel = 1;
             _recoilLevel = 1;

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Shot_Shift.Infrastructure.Scripts.Services;
-using Shot_Shift.UI.Scripts.StartScene;
 using UnityEngine;
 using Zenject;
 
@@ -21,6 +20,11 @@ namespace Shot_Shift.UI.Scripts.GameLoopScene
         private void Constructor(PauseService pauseService)
         {
             _pauseService = pauseService;
+
+            if (_windows.Count != 0)
+            {
+                SelectWindow(_windows[0]);
+            }
         }
         
         public void SelectWindow(WindowView window)

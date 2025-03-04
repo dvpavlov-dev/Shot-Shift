@@ -1,5 +1,5 @@
 ﻿using R3;
-using Shot_Shift.Actors.Weapon.Scripts;
+using Shot_Shift.Gameplay.Weapon.Scripts;
 using UnityEngine;
 
 namespace Shot_Shift.Infrastructure.Scripts.Factories

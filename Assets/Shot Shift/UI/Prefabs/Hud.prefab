@@ -122,6 +122,10 @@ MonoBehaviour:
   _healthBarView: {fileID: 4395939859457928936}
   _timerView: {fileID: 4283885064704536955}
   _coinsText: {fileID: 4406021398658044104}
+  _attackButton: {fileID: 337007385656543904}
+  _bulletTimeButton: {fileID: 3401875727670767345}
+  _switchWeaponButton: {fileID: 3943013837510060011}
+  _joystickArea: {fileID: 1303311272652240329}
 --- !u!1 &469574525721231631
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,13 +943,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Shot_Shift.UI.Scripts.GameLoopUIController, Assembly-CSharp
+        m_TargetAssemblyTypeName: Shot_Shift.UI.Scripts.GameLoopScene.GameLoopUIController,
+          Assembly-CSharp
         m_MethodName: SelectWindow
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: Shot_Shift.UI.Scripts.StartScene.WindowView,
-            Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Shot_Shift.UI.Scripts.WindowView, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -998,8 +1002,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -233.32007, y: -150}
-  m_SizeDelta: {x: -466.63, y: -300}
+  m_AnchoredPosition: {x: -250, y: -150}
+  m_SizeDelta: {x: -500, y: -300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1948467203793701271
 CanvasRenderer:

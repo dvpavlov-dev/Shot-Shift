@@ -96,7 +96,7 @@ namespace Shot_Shift.UI.Scripts.StartScene
         
         private void OnDestroy()
         {
-            if(SceneManager.loadedSceneCount == 0) return;
+            if (SceneManager.sceneCount == 0) return;
             
             _playerProgressService.OnCoinsChanged -= UpdateCoinsCount;
             _playerProgressService.OnUpgradesChanged -= UpdateUpgradesText;

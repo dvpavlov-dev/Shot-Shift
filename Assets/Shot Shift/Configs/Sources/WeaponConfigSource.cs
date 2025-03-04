@@ -9,6 +9,7 @@ namespace Shot_Shift.Configs.Sources
         [SerializeField] private float _recoilForce;
         [SerializeField] private float _shotsPerSeconds;
         [SerializeField] private int _openAfterLevel;
+        [SerializeField] private AudioClip _shotSound;
 
         [Header("Use bullets")]
         [SerializeField] private BulletConfigSource _bulletConfig;
@@ -18,6 +19,7 @@ namespace Shot_Shift.Configs.Sources
         public float ShotsPerSecond => _shotsPerSeconds;
         public int OpenAfterLevel => _openAfterLevel;
         public BulletConfigSource BulletConfig => _bulletConfig;
+        public AudioClip ShotSound => _shotSound;
     }
 
 }

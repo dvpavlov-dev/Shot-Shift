@@ -1,6 +1,5 @@
 using System.Collections.Generic;
-using Shot_Shift.Actors.Weapon.Scripts;
-using Shot_Shift.Configs.Sources;
+using Shot_Shift.Gameplay.Weapon.Scripts;
 using UnityEngine;
 using Zenject;
 

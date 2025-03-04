@@ -1,5 +1,6 @@
 ﻿using Shot_Shift.Configs.Sources;
-namespace Shot_Shift.Actors.Weapon.Scripts
+
+namespace Shot_Shift.Gameplay.Weapon.Scripts
 {
     public class SmgController : WeaponController<SmgConfigSource>
     {

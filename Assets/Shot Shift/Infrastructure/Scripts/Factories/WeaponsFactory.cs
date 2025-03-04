@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using R3;
-using Shot_Shift.Actors.Weapon.Scripts;
+using Shot_Shift.Gameplay.Weapon.Scripts;
 using Shot_Shift.Infrastructure.Scripts.Services;
 using UnityEngine;
 using Zenject;

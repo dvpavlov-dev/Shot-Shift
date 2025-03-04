@@ -1,4 +1,3 @@
-using Infrastructure;
 using Shot_Shift.Infrastructure.Scripts.Factories;
 using Shot_Shift.Infrastructure.Scripts.Services;
 using UnityEngine;
@@ -20,6 +19,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Installers
     
         private void BindServices()
         {
+            Container.BindInterfacesAndSelfTo<SettingsService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<AbilitiesService>().AsSingle().NonLazy();
             Container.Bind<PauseService>().AsSingle().NonLazy();
             Container.BindInterfacesTo<WeaponService>().AsSingle().NonLazy();
