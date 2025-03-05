@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bffdd8b6484cc1be4397d7f65def10, type: 3}
   m_Name: SmgBulletConfig
   m_EditorClassIdentifier: 
-  _bulletDamage: 1
-  _bulletSpeed: 10
-  _bulletRange: 10
+  _projectilePrefab: {fileID: 5472746190812495962, guid: 3710411b95a5d5c4bb7019ae44d73b76, type: 3}
+  _damage: 1
+  _speed: 10
+  _range: 10

@@ -46,13 +46,10 @@ namespace Shot_Shift.Gameplay.Weapon.Scripts
         
         protected virtual void SetupBullet()
         {
-            GameObject bulletPref = _weaponsFactory.GetBullet();
+            GameObject bulletPref = _weaponsFactory.GetProjectile(_weaponConfig.ProjectileConfig);
             bulletPref.transform.position = _shootPoint.position;
             bulletPref.transform.rotation = _shootPoint.rotation;
             bulletPref.SetActive(true);
-            
-            BulletController bullet = bulletPref.GetComponent<BulletController>();
-            bullet.Setup(_weaponConfig.BulletConfig.BulletDamage * _playerProgressService.DamageUpgrade, _weaponConfig.BulletConfig.BulletSpeed, _weaponConfig.BulletConfig.BulletRange);
         }
     }
 

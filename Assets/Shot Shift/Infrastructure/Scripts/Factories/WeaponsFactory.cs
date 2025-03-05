@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using R3;
+using Shot_Shift.Configs.Sources;
 using Shot_Shift.Gameplay.Weapon.Scripts;
 using Shot_Shift.Infrastructure.Scripts.Services;
 using UnityEngine;
@@ -12,21 +13,20 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
     public class WeaponsFactory : IWeaponsFactory
     {
         private readonly DiContainer _container;
-        private readonly Configs _configs;
         private readonly IWeaponService _weaponService;
 
-        private readonly Queue<GameObject> _bulletsPool = new();
+        private readonly Dictionary<ProjectileConfigSource, Queue<GameObject>> _projectilesPools = new();
+        private readonly List<IWeaponController> _activeWeaponsControllers = new();
         private readonly List<GameObject> _weapons = new();
 
         private CompositeDisposable _disposable;
-        private Transform _containerForBullets;
+        private Transform _containerForProjectiles;
         private int _currentWeaponId;
 
-        public WeaponsFactory(DiContainer container, Configs configs, IWeaponService weaponService)
+        public WeaponsFactory(DiContainer container, IWeaponService weaponService)
         {
             _container = container;
             _weaponService = weaponService;
-            _configs = configs;
         }
 
         public Observable<Unit> InitializeFactory()
@@ -41,7 +41,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
         {
             _weapons.Clear();
             
-            foreach (IWeaponController activeWeapon in _weaponService.GetActiveWeapons())
+            foreach (IWeaponController activeWeapon in _activeWeaponsControllers)
             {
                 GameObject weapon = _container.InstantiatePrefab(activeWeapon.WeaponConfig.WeaponPref, weaponSpot);
                 _weapons.Add(weapon);
@@ -60,17 +60,17 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
             return GetWeapon(_currentWeaponId);
         }
         
-        public GameObject GetBullet()
+        public GameObject GetProjectile(ProjectileConfigSource projectilePrefab)
         {
-            GameObject bullet = _bulletsPool.Count == 0 ? CreateBullet(_containerForBullets) : _bulletsPool.Dequeue();
+            GameObject projectile = _projectilesPools[projectilePrefab].Count == 0 ? CreateProjectile(projectilePrefab.ProjectilePrefab, _containerForProjectiles) : _projectilesPools[projectilePrefab].Dequeue();
             
-            return bullet;
+            return projectile;
         }
 
-        public void DisposeBullet(GameObject bullet)
+        public void DisposeProjectile(ProjectileConfigSource projectileConfig, GameObject projectile)
         {
-            bullet.SetActive(false);
-            _bulletsPool.Enqueue(bullet);
+            projectile.SetActive(false);
+            _projectilesPools[projectileConfig].Enqueue(projectile);
         }
         
         private IWeaponController GetWeapon(int weaponId)
@@ -91,26 +91,38 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
 
         private async ValueTask CreateBulletsPool(CancellationToken cancellationToken)
         {
-            _containerForBullets = new GameObject("BulletsPool").transform;
-            _bulletsPool.Clear();
+            _containerForProjectiles = new GameObject("ProjectilesPool").transform;
+            _activeWeaponsControllers.Clear();
+            _projectilesPools.Clear();
             
-            for (int i = 0; i < 10; i++)
+            foreach (IWeaponController weapon in _weaponService.GetActiveWeapons())
             {
-                GameObject bullet = CreateBullet(_containerForBullets);
-                bullet.SetActive(false);
-
-                _bulletsPool.Enqueue(bullet);
-
-                Debug.Log($"Create bullet: {i}");
+                _activeWeaponsControllers.Add(weapon);
+                ProjectileConfigSource projectilePref = weapon.WeaponConfig.ProjectileConfig;
                 
-                cancellationToken.ThrowIfCancellationRequested();
-                await Task.Yield();
+                if (!_projectilesPools.ContainsKey(projectilePref))
+                {
+                    _projectilesPools.Add(projectilePref, new Queue<GameObject>());
+                }
+                
+                for (int i = 0; i < 10; i++)
+                {
+                    GameObject projectile = CreateProjectile(projectilePref.ProjectilePrefab, _containerForProjectiles);
+                    projectile.SetActive(false);
+
+                    _projectilesPools[projectilePref].Enqueue(projectile);
+
+                    Debug.Log($"Create projectile: {i}");
+                
+                    cancellationToken.ThrowIfCancellationRequested();
+                    await Task.Yield();
+                }
             }
         }
 
-        private GameObject CreateBullet(Transform containerForBullets)
+        private GameObject CreateProjectile(GameObject projectilePref, Transform containerForBullets)
         {
-            return _container.InstantiatePrefab(_configs.WeaponsConfig.BulletPref, containerForBullets);
+            return _container.InstantiatePrefab(projectilePref, containerForBullets);
         }
     }
 }

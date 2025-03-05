@@ -119,10 +119,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4017798938194854360}
-  - component: {fileID: 8191884945569307025}
   - component: {fileID: 6353329215763082006}
+  - component: {fileID: 1817335285342460475}
   m_Layer: 0
-  m_Name: bullet
+  m_Name: SmgBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,18 +144,6 @@ Transform:
   - {fileID: 422450867986095281}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8191884945569307025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5472746190812495962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bd6560a3bf98b24595950fae80d2df1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &6353329215763082006
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -179,3 +167,16 @@ CapsuleCollider:
   m_Height: 0.5
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1817335285342460475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5472746190812495962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 275adee5f6154711a3eb174335efda56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletConfig: {fileID: 11400000, guid: ff41c0680b2d37846b4ad2f17def8aee, type: 2}

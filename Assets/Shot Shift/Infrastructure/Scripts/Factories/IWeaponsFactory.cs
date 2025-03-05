@@ -1,4 +1,5 @@
 ﻿using R3;
+using Shot_Shift.Configs.Sources;
 using Shot_Shift.Gameplay.Weapon.Scripts;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
         void CreateWeapons(Transform weaponSpot);
         IWeaponController GetFirstWeapon();
         IWeaponController GetNextWeapon();
-        GameObject GetBullet();
-        void DisposeBullet(GameObject bullet);
+        GameObject GetProjectile(ProjectileConfigSource projectilePrefab);
+        void DisposeProjectile(ProjectileConfigSource projectileConfig, GameObject projectile);
     }
 }

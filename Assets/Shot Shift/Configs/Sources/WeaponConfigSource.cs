@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Shot_Shift.Configs.Sources
 {
@@ -11,14 +12,17 @@ namespace Shot_Shift.Configs.Sources
         [SerializeField] private int _openAfterLevel;
         [SerializeField] private AudioClip _shotSound;
 
+        [FormerlySerializedAs("_projectilePrefab")]
+        [FormerlySerializedAs("_bulletPrefab")]
+        [FormerlySerializedAs("_bulletConfig")]
         [Header("Use bullets")]
-        [SerializeField] private BulletConfigSource _bulletConfig;
+        [SerializeField] private ProjectileConfigSource _projectileConfig;
 
         public GameObject WeaponPref => _weaponPref;
         public float RecoilForce => _recoilForce;
         public float ShotsPerSecond => _shotsPerSeconds;
         public int OpenAfterLevel => _openAfterLevel;
-        public BulletConfigSource BulletConfig => _bulletConfig;
+        public ProjectileConfigSource ProjectileConfig => _projectileConfig;
         public AudioClip ShotSound => _shotSound;
     }
 

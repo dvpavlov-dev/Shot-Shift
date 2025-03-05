@@ -1,13 +1,17 @@
+using System;
 using Shot_Shift.Actors.Weapon.Scripts;
+using Shot_Shift.Configs.Sources;
 using Shot_Shift.Infrastructure.Scripts.Factories;
 using Shot_Shift.Infrastructure.Scripts.Services;
 using UnityEngine;
 using Zenject;
 
-namespace Shot_Shift.Gameplay.Weapon.Scripts
+namespace Shot_Shift.Gameplay.Weapon.Scripts.Projectiles
 {
-    public class BulletController : MonoBehaviour
+    public class BulletController<TProjectileConfig> : MonoBehaviour where TProjectileConfig : ProjectileConfigSource
     {
+        [SerializeField] private TProjectileConfig _bulletConfig;
+        
         private IWeaponsFactory _weaponsFactory;
         private AbilitiesService _abilitiesService;
         
@@ -16,15 +20,22 @@ namespace Shot_Shift.Gameplay.Weapon.Scripts
         private float _range;
 
         private Vector3 _endPoint;
+        private PlayerProgressService _playerProgressService;
 
         [Inject]
-        private void Constructor(IWeaponsFactory weaponsFactory, AbilitiesService abilitiesService)
+        private void Constructor(IWeaponsFactory weaponsFactory, AbilitiesService abilitiesService, PlayerProgressService playerProgressService)
         {
+            _playerProgressService = playerProgressService;
             _abilitiesService = abilitiesService;
             _weaponsFactory = weaponsFactory;
         }
-        
-        public void Setup(float damage, float speed, float range)
+
+        private void OnEnable()
+        {
+            Setup(_bulletConfig.Damage * _playerProgressService.DamageUpgrade, _bulletConfig.Speed, _bulletConfig.Range);
+        }
+
+        private void Setup(float damage, float speed, float range)
         {
             _damage = damage;
             _speed = speed;
@@ -54,7 +65,7 @@ namespace Shot_Shift.Gameplay.Weapon.Scripts
 
         private void Dispose()
         {
-            _weaponsFactory.DisposeBullet(gameObject);
+            _weaponsFactory.DisposeProjectile(_bulletConfig, gameObject);
         }
     }
 }

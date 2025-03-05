@@ -7,9 +7,7 @@ namespace Shot_Shift.Configs.Sources
     public class WeaponsConfigSource : ScriptableObject
     {
         [SerializeField] private List<GameObject> _weapons;
-        [SerializeField] private GameObject _bulletPref;
         
         public List<GameObject> Weapons => _weapons;
-        public GameObject BulletPref => _bulletPref;
     }
 }
