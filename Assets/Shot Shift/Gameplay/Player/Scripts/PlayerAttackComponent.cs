@@ -20,6 +20,7 @@ namespace Shot_Shift.Actors.Player.Scripts
         private int _currentWeaponId;
         private Rigidbody _rb;
         private bool _isFire;
+        private bool _canWeaponChange = true;
 
         [Inject]
         private void Constructor(
@@ -40,22 +41,6 @@ namespace Shot_Shift.Actors.Player.Scripts
             _weaponsFactory.CreateWeapons(_weaponSpot);
 
             _currentWeapon = _weaponsFactory.GetFirstWeapon();
-        }
-
-        private bool _canWeaponChange = true;
-        private void SwitchWeapon()
-        {
-            if (!_canWeaponChange) 
-                return;
-
-            _canWeaponChange = false;
-            _currentWeapon = _weaponsFactory.GetNextWeapon();
-            Invoke(nameof(ChangeWeaponActivated), 0.5f);
-        }
-        
-        private void ChangeWeaponActivated()
-        {
-            _canWeaponChange = true;
         }
 
         private void Update()
@@ -80,6 +65,21 @@ namespace Shot_Shift.Actors.Player.Scripts
             {
                 UseBulletTime();
             }
+        }
+        
+        private void SwitchWeapon()
+        {
+            if (!_canWeaponChange) 
+                return;
+
+            _canWeaponChange = false;
+            _currentWeapon = _weaponsFactory.GetNextWeapon();
+            Invoke(nameof(ChangeWeaponActivated), 0.5f);
+        }
+
+        private void ChangeWeaponActivated()
+        {
+            _canWeaponChange = true;
         }
         
         private void UseBulletTime()
