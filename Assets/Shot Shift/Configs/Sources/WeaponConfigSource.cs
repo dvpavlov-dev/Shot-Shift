@@ -25,5 +25,4 @@ namespace Shot_Shift.Configs.Sources
         public ProjectileConfigSource ProjectileConfig => _projectileConfig;
         public AudioClip ShotSound => _shotSound;
     }
-
 }

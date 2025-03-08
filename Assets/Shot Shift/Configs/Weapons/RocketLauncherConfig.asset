@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0778b1bca72e4888abf193ea74ac9123, type: 3}
+  m_Name: RocketLauncherConfig
+  m_EditorClassIdentifier: 
+  _weaponPref: {fileID: 3223844144349455060, guid: 5f357ce5428232441b3fc0e75dfb6c96, type: 3}
+  _recoilForce: 1
+  _shotsPerSeconds: 1
+  _openAfterLevel: 4
+  _shotSound: {fileID: 8300000, guid: 0bd05763df902854a80475577a26666a, type: 3}
+  _projectileConfig: {fileID: 11400000, guid: 7e4a96eb97019624dbb40eef2148582d, type: 2}

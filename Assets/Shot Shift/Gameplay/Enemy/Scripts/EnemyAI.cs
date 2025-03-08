@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
-namespace Shot_Shift.Actors.Enemy.Scripts
+namespace Shot_Shift.Gameplay.Enemy.Scripts
 {
     [RequireComponent(typeof(NavMeshAgent))]
     public class EnemyAI : MonoBehaviour

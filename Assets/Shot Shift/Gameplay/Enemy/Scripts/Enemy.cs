@@ -1,5 +1,6 @@
 using Shot_Shift.Actors.Weapon.Scripts;
 using Shot_Shift.Configs.Sources;
+using Shot_Shift.Gameplay.Enemy.Scripts;
 using Shot_Shift.Infrastructure.Scripts.Factories;
 using Shot_Shift.UI.Scripts.GameLoopScene;
 using UnityEngine;

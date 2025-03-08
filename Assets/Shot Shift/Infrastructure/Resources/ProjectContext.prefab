@@ -106,7 +106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _configs: {fileID: 2105007863657938599}
-  _clickSoundService: {fileID: 0}
 --- !u!114 &2105007863657938599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +250,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2940846420246672484, guid: 355df91a4c27d0642bc92898e8fc848b, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7374696242065778132, guid: 355df91a4c27d0642bc92898e8fc848b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7374696242065778132, guid: 355df91a4c27d0642bc92898e8fc848b, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7374696242065778132, guid: 355df91a4c27d0642bc92898e8fc848b, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7374696242065778132, guid: 355df91a4c27d0642bc92898e8fc848b, type: 3}
+      propertyPath: m_IgnoreParentGroups
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -6162,7 +6162,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 1200, y: 100}
+  m_SizeDelta: {x: 900, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &5043966431629457938
 MonoBehaviour:
@@ -6265,7 +6265,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -250, y: -150}
+  m_AnchoredPosition: {x: -250.00006, y: -150}
   m_SizeDelta: {x: -500, y: -300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &5385491178098033379
@@ -6423,6 +6423,8 @@ MonoBehaviour:
   _healthBarView: {fileID: 7384715296529651497}
   _timerView: {fileID: 6920108111305099450}
   _coinsText: {fileID: 7376639399749691657}
+  _bulletsImage: {fileID: 0}
+  _bulletsText: {fileID: 0}
   _bulletTimeButton: {fileID: 8381094032228849456}
   _switchWeaponButton: {fileID: 7908924976857603626}
   _attackButton: {fileID: 6905998465395766113}

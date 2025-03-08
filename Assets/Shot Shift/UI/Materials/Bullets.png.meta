@@ -1,0 +1,550 @@
+fileFormatVersion: 2
+guid: 2552594ce0bf9b74c94f1c0d580500fc
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bullets_1
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 1008
+        width: 270
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6ee2154b5b89e84694046a03c845212
+      internalID: 1670898736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullets_3
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 525
+        width: 600
+        height: 770
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d494c741b3d649a40ac7b8c283513030
+      internalID: 73651002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullets_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 996
+        width: 280
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f27e59f5bfde6e4e89436a1927c1656
+      internalID: -1129938995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullets_10
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 1044
+        width: 226
+        height: 218
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3dcac2eaeb4fd149adaeebbdc6c06e0
+      internalID: -1935709162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullets_43
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 606
+        width: 354
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dcaeb2c04e107849bc45d246377718c
+      internalID: 1486492379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullets_48
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 618
+        width: 360
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85af28df6530cac47b89beeb5825e193
+      internalID: 2010731112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullets_51
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 661
+        width: 222
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95fe9e3a289adbf49b7ea08aa7b6bc85
+      internalID: 771109632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullets_76
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 144
+        width: 370
+        height: 378
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 726a5525625ee5b49b4356e121c50fa7
+      internalID: 1903631762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullets_81
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 156
+        width: 360
+        height: 348
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13a9d17b7fd779d4199d7f36d94efbbc
+      internalID: -188989462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullets_82
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 174
+        width: 123
+        height: 336
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42854fe046a43bb4f97cc0ac3082418a
+      internalID: -1066860000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullets_83
+      rect:
+        serializedVersion: 2
+        x: 1212
+        y: 152
+        width: 180
+        height: 352
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81ad37510f761874ab9a33549ec68aa2
+      internalID: 286910851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullets_93
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 168
+        width: 140
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f60168d30fd1bdb408f05074b8d2ade8
+      internalID: -2025113792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullets_97
+      rect:
+        serializedVersion: 2
+        x: 1458
+        y: 168
+        width: 135
+        height: 203
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ff91108d19322345a596ebdaa2d7a99
+      internalID: -708890020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 903ec0155d3d4284289b47bb79346fb0
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Bullets_0: -934459837
+      Bullets_1: 1670898736
+      Bullets_10: -1935709162
+      Bullets_100: -1537019954
+      Bullets_101: -2106747726
+      Bullets_102: -1338369726
+      Bullets_103: -105263875
+      Bullets_104: 2146639295
+      Bullets_105: 707518858
+      Bullets_106: 259737215
+      Bullets_107: 1146942026
+      Bullets_108: -1592743912
+      Bullets_109: 244705327
+      Bullets_11: -83078634
+      Bullets_110: -890864027
+      Bullets_111: -773011261
+      Bullets_112: 780647520
+      Bullets_113: 1492769110
+      Bullets_114: -1985507192
+      Bullets_115: 1046784392
+      Bullets_116: -855467665
+      Bullets_117: 287075470
+      Bullets_118: 110633046
+      Bullets_119: -1749172042
+      Bullets_12: 1531512902
+      Bullets_120: -612474501
+      Bullets_13: -1656752778
+      Bullets_14: -1212608940
+      Bullets_15: -2081277287
+      Bullets_16: 1948059336
+      Bullets_17: 796400948
+      Bullets_18: -697945756
+      Bullets_19: -1049819877
+      Bullets_2: -111724412
+      Bullets_20: 287472704
+      Bullets_21: 739767595
+      Bullets_22: 848695173
+      Bullets_23: -939726737
+      Bullets_24: 1283175273
+      Bullets_25: 881020517
+      Bullets_26: -196018477
+      Bullets_27: 528632789
+      Bullets_28: 665860673
+      Bullets_29: -1452716666
+      Bullets_3: 73651002
+      Bullets_30: -756669141
+      Bullets_31: -395442174
+      Bullets_32: -98003844
+      Bullets_33: -224431140
+      Bullets_34: -880200332
+      Bullets_35: -1842354194
+      Bullets_36: -738217171
+      Bullets_37: 241896347
+      Bullets_38: 1524390906
+      Bullets_39: -887186558
+      Bullets_4: -2110835329
+      Bullets_40: -533828368
+      Bullets_41: 1934110690
+      Bullets_42: 601436229
+      Bullets_43: 1486492379
+      Bullets_44: -1560232150
+      Bullets_45: 1825492329
+      Bullets_46: -1252491673
+      Bullets_47: -1085984683
+      Bullets_48: 2010731112
+      Bullets_49: -1160191050
+      Bullets_5: 1216059776
+      Bullets_50: -1862373734
+      Bullets_51: 771109632
+      Bullets_52: -1996722854
+      Bullets_53: -977098535
+      Bullets_54: 43201610
+      Bullets_55: -880166310
+      Bullets_56: 1847370230
+      Bullets_57: 1513220887
+      Bullets_58: -1314874673
+      Bullets_59: 1253267225
+      Bullets_6: -1129938995
+      Bullets_60: 48162822
+      Bullets_61: 1784531705
+      Bullets_62: -398292138
+      Bullets_63: -922979769
+      Bullets_64: -214033543
+      Bullets_65: 1039704066
+      Bullets_66: 1410967234
+      Bullets_67: -1512087293
+      Bullets_68: -1852591084
+      Bullets_69: -727121481
+      Bullets_7: -1422365900
+      Bullets_70: -2054972418
+      Bullets_71: -1089205349
+      Bullets_72: 495890672
+      Bullets_73: 1496214185
+      Bullets_74: -1110670029
+      Bullets_75: 1995236991
+      Bullets_76: 1903631762
+      Bullets_77: -255586823
+      Bullets_78: 1590960256
+      Bullets_79: -404584802
+      Bullets_8: -1011931954
+      Bullets_80: 1456972957
+      Bullets_81: -188989462
+      Bullets_82: -1066860000
+      Bullets_83: 286910851
+      Bullets_84: -313894900
+      Bullets_85: -2046797537
+      Bullets_86: 789691775
+      Bullets_87: 1469990706
+      Bullets_88: 1232587443
+      Bullets_89: 1315213359
+      Bullets_9: -1730335270
+      Bullets_90: 84461529
+      Bullets_91: -1698587037
+      Bullets_92: 1924574688
+      Bullets_93: -2025113792
+      Bullets_94: 1427219419
+      Bullets_95: -2088116743
+      Bullets_96: -1498474185
+      Bullets_97: -708890020
+      Bullets_98: 435779841
+      Bullets_99: 1486016230
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

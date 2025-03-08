@@ -15,7 +15,7 @@ namespace Shot_Shift.Gameplay.Weapon.Scripts
         private AudioSource _audioSource;
         
         protected IWeaponsFactory _weaponsFactory;
-        protected PlayerProgressService _playerProgressService;
+        private PlayerProgressService _playerProgressService;
         private SettingsService _settingsService;
 
         public WeaponConfigSource WeaponConfig => _weaponConfig;
@@ -46,10 +46,10 @@ namespace Shot_Shift.Gameplay.Weapon.Scripts
         
         protected virtual void SetupBullet()
         {
-            GameObject bulletPref = _weaponsFactory.GetProjectile(_weaponConfig.ProjectileConfig);
-            bulletPref.transform.position = _shootPoint.position;
-            bulletPref.transform.rotation = _shootPoint.rotation;
-            bulletPref.SetActive(true);
+            GameObject projectilePref = _weaponsFactory.GetProjectile(_weaponConfig.ProjectileConfig);
+            projectilePref.transform.position = _shootPoint.position;
+            projectilePref.transform.rotation = _shootPoint.rotation;
+            projectilePref.SetActive(true);
         }
     }
 

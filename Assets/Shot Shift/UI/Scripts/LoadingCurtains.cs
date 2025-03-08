@@ -1,6 +1,7 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Shot_Shift.UI.Scripts
 {
@@ -18,11 +19,13 @@ namespace Shot_Shift.UI.Scripts
             _loadingImage.DOLocalRotate(new Vector3(0, 0, -360), 3, RotateMode.FastBeyond360)
                 .SetLoops(-1)
                 .SetEase(Ease.OutBounce);
+            
+            EventSystem.current.enabled = false;
         }
 
         public void HideLoadingCurtains()
         {
-            _canvasGroup.DOFade(0, 1f);
+            _canvasGroup.DOFade(0, 1f).OnComplete(() => EventSystem.current.enabled = true);
             
             _loadingImage.DOKill();
         }

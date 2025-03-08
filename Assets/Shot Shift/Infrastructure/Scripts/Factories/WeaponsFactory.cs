@@ -50,7 +50,8 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
 
         public IWeaponController GetFirstWeapon()
         {
-            return GetWeapon(0);
+            _currentWeaponId = 0;
+            return GetWeapon(_currentWeaponId);
         }
 
         public IWeaponController GetNextWeapon()
@@ -63,6 +64,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
         public GameObject GetProjectile(ProjectileConfigSource projectilePrefab)
         {
             GameObject projectile = _projectilesPools[projectilePrefab].Count == 0 ? CreateProjectile(projectilePrefab.ProjectilePrefab, _containerForProjectiles) : _projectilesPools[projectilePrefab].Dequeue();
+            projectile.SetActive(false);
             
             return projectile;
         }

@@ -1,6 +1,7 @@
 using Shot_Shift.Infrastructure.Scripts.Services;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Shot_Shift.UI.Scripts.GameLoopScene
@@ -10,6 +11,8 @@ namespace Shot_Shift.UI.Scripts.GameLoopScene
         [SerializeField] private HealthBarView _healthBarView;
         [SerializeField] private TimerView _timerView;
         [SerializeField] private TMP_Text _coinsText;
+        [SerializeField] private Image _bulletsImage;
+        [SerializeField] private TMP_Text _bulletsText;
 
         [SerializeField] private RectTransform _bulletTimeButton;
         [SerializeField] private RectTransform _switchWeaponButton;

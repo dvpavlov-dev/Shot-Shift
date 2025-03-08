@@ -1,23 +1,24 @@
-using System;
 using Shot_Shift.Actors.Weapon.Scripts;
 using Shot_Shift.Configs.Sources;
 using Shot_Shift.Infrastructure.Scripts.Factories;
 using Shot_Shift.Infrastructure.Scripts.Services;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Shot_Shift.Gameplay.Weapon.Scripts.Projectiles
 {
-    public class BulletController<TProjectileConfig> : MonoBehaviour where TProjectileConfig : ProjectileConfigSource
+    public class ProjectileController<TProjectileConfig> : MonoBehaviour where TProjectileConfig : ProjectileConfigSource
     {
-        [SerializeField] private TProjectileConfig _bulletConfig;
+        [FormerlySerializedAs("_bulletConfig")]
+        [SerializeField] protected TProjectileConfig _projectileConfig;
         
         private IWeaponsFactory _weaponsFactory;
         private AbilitiesService _abilitiesService;
         
-        private float _damage;
-        private float _speed;
-        private float _range;
+        protected float _damage;
+        protected float _speed;
+        protected float _range;
 
         private Vector3 _endPoint;
         private PlayerProgressService _playerProgressService;
@@ -32,7 +33,25 @@ namespace Shot_Shift.Gameplay.Weapon.Scripts.Projectiles
 
         private void OnEnable()
         {
-            Setup(_bulletConfig.Damage * _playerProgressService.DamageUpgrade, _bulletConfig.Speed, _bulletConfig.Range);
+            Setup(_projectileConfig.Damage * _playerProgressService.DamageUpgrade, _projectileConfig.Speed, _projectileConfig.Range);
+        }
+
+        protected virtual void CollideWithObject(Collider other)
+        {
+            if (!other.CompareTag("Player") && !other.CompareTag("Projectile"))
+            {
+                if (other.gameObject.GetComponent<IDamageable>() is {} damageable)
+                {
+                    damageable.TakeDamage(_damage);
+                }
+                
+                Dispose();
+            }
+        }
+        
+        protected void Dispose()
+        {
+            _weaponsFactory.DisposeProjectile(_projectileConfig, gameObject);
         }
 
         private void Setup(float damage, float speed, float range)
@@ -41,7 +60,7 @@ namespace Shot_Shift.Gameplay.Weapon.Scripts.Projectiles
             _speed = speed;
             _range = range;
 
-            _endPoint = transform.right * _range;
+            _endPoint = transform.position + transform.right * _range;
         }
 
         private void Update()
@@ -56,16 +75,7 @@ namespace Shot_Shift.Gameplay.Weapon.Scripts.Projectiles
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.GetComponent<IDamageable>() is {} damageable && !other.CompareTag("Player"))
-            {
-                damageable.TakeDamage(_damage);
-                Dispose();
-            }
-        }
-
-        private void Dispose()
-        {
-            _weaponsFactory.DisposeProjectile(_bulletConfig, gameObject);
+            CollideWithObject(other);
         }
     }
 }

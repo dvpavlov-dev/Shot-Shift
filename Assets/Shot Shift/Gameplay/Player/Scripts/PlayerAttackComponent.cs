@@ -42,9 +42,20 @@ namespace Shot_Shift.Actors.Player.Scripts
             _currentWeapon = _weaponsFactory.GetFirstWeapon();
         }
 
+        private bool _canWeaponChange = true;
         private void SwitchWeapon()
         {
+            if (!_canWeaponChange) 
+                return;
+
+            _canWeaponChange = false;
             _currentWeapon = _weaponsFactory.GetNextWeapon();
+            Invoke(nameof(ChangeWeaponActivated), 0.5f);
+        }
+        
+        private void ChangeWeaponActivated()
+        {
+            _canWeaponChange = true;
         }
 
         private void Update()

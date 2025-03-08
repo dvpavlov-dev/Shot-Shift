@@ -22,7 +22,7 @@ namespace Shot_Shift.Gameplay.Player.Scripts
                 return;
             
             Vector3 inputDirection = new Vector3(_inputService.RotateAxis.x, 0f, _inputService.RotateAxis.y).normalized;
-
+            
             if (inputDirection.magnitude >= 0.1f)
             {
                 Vector3 moveDirection = Quaternion.Euler(0, 90, 0) * inputDirection; 
