@@ -7,9 +7,11 @@ using Zenject;
 
 namespace Shot_Shift.Gameplay.Enemy.Scripts
 {
-    [RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(NavMeshAgent), typeof(AudioSource))]
     public class EnemyAI : MonoBehaviour
     {
+        [SerializeField] private ParticleSystem _attackParticle;
+        
         private EnemyConfigSource _enemyConfig;
         private PauseService _pauseService;
         private AbilitiesService _abilitiesService;
@@ -17,6 +19,7 @@ namespace Shot_Shift.Gameplay.Enemy.Scripts
         private Transform _target;
         private NavMeshAgent _agent;
         private bool _isAttacking;
+        private AudioSource _audioSource;
 
         [Inject]
         private void Constructor(PauseService pauseService, AbilitiesService abilitiesService)
@@ -33,6 +36,8 @@ namespace Shot_Shift.Gameplay.Enemy.Scripts
             _agent = GetComponent<NavMeshAgent>();
             _agent.speed = _enemyConfig.Speed;
             _agent.stoppingDistance = _enemyConfig.AttackDistance - 1;
+
+            _audioSource = GetComponent<AudioSource>();
         }
 
         private void Update()
@@ -62,6 +67,11 @@ namespace Shot_Shift.Gameplay.Enemy.Scripts
             {
                 _isAttacking = true;
                 damageable.TakeDamage(_enemyConfig.Damage);
+                
+                _attackParticle.Play();
+
+                _audioSource.clip = _enemyConfig.AttackSound;
+                _audioSource.Play();
                 
                 Invoke(nameof(CooldownAttackEnded), _enemyConfig.CooldownAttack);
             }

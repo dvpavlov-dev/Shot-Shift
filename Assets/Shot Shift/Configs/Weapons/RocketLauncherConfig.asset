@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponPref: {fileID: 3223844144349455060, guid: 5f357ce5428232441b3fc0e75dfb6c96, type: 3}
   _recoilForce: 1
-  _shotsPerSeconds: 1
+  _shotsPerSeconds: 0.5
   _openAfterLevel: 4
   _shotSound: {fileID: 8300000, guid: 0bd05763df902854a80475577a26666a, type: 3}
   _projectileConfig: {fileID: 11400000, guid: 7e4a96eb97019624dbb40eef2148582d, type: 2}

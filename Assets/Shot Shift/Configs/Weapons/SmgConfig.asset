@@ -16,5 +16,5 @@ MonoBehaviour:
   _recoilForce: 0.5
   _shotsPerSeconds: 10
   _openAfterLevel: 0
-  _shotSound: {fileID: 8300000, guid: 75adfe9a619833445a701305b983e548, type: 3}
+  _shotSound: {fileID: 8300000, guid: e8786efb80cb6dc418907f15fa3e4fef, type: 3}
   _projectileConfig: {fileID: 11400000, guid: ff41c0680b2d37846b4ad2f17def8aee, type: 2}

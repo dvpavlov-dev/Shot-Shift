@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
+
 namespace Shot_Shift.Configs.Sources
 {
     [CreateAssetMenu(fileName = "EnemyConfig", menuName = "Configs/EnemyConfig")]
@@ -11,6 +11,7 @@ namespace Shot_Shift.Configs.Sources
         [SerializeField] private float _cooldownAttack;
         [SerializeField] private float _attackDistance;
         [SerializeField] private float _speed;
+        [SerializeField] private AudioClip _attackSound;
 
         public GameObject EnemyPrefab => _enemyPrefab;
         public float Health => _health;
@@ -18,5 +19,6 @@ namespace Shot_Shift.Configs.Sources
         public float CooldownAttack => _cooldownAttack;
         public float AttackDistance => _attackDistance;
         public float Speed => _speed;
+        public AudioClip AttackSound => _attackSound;
     }
 }

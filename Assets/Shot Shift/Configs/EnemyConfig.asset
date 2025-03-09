@@ -18,3 +18,4 @@ MonoBehaviour:
   _cooldownAttack: 2
   _attackDistance: 3
   _speed: 2
+  _attackSound: {fileID: 8300000, guid: cc6699269b4c1d44ea1e860518b9bb73, type: 3}

@@ -16,7 +16,7 @@ MonoBehaviour:
   _recoilForce: 3
   _shotsPerSeconds: 1
   _openAfterLevel: 2
-  _shotSound: {fileID: 8300000, guid: 5ff823f546b52574a931e1d9b44290a6, type: 3}
+  _shotSound: {fileID: 8300000, guid: 0a7f0d77152e870468db2d46f923c2a7, type: 3}
   _projectileConfig: {fileID: 11400000, guid: f35d08edf5c6c2a4b84b93197463222f, type: 2}
   _spread: 15
   _numberOfBilletsFired: 6
