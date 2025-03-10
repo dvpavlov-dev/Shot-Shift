@@ -74,6 +74,7 @@ namespace Shot_Shift.Actors.Player.Scripts
 
             _canWeaponChange = false;
             _currentWeapon = _weaponsFactory.GetNextWeapon();
+            FireIsOver();
             Invoke(nameof(ChangeWeaponActivated), 0.5f);
         }
 
