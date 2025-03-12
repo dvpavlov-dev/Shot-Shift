@@ -46,7 +46,7 @@ namespace Shot_Shift.Infrastructure.Scripts.Factories
 
         public GameObject CreatePlayer()
         {
-            _player = _container.InstantiatePrefab(_configs.PlayerConfig.PlayerPrefab ,new Vector3(0, 0, 0), Quaternion.identity, _containerForEnemy);
+            _player = _container.InstantiatePrefab(_configs.PlayerConfig.PlayerPrefab ,new Vector3(0, 1, 0), Quaternion.identity, _containerForEnemy);
             _player.GetComponent<Player>().Setup(_configs.PlayerConfig);
             
             return _player;

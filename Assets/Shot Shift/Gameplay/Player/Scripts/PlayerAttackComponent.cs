@@ -1,3 +1,4 @@
+using System.Collections;
 using Shot_Shift.Gameplay.Weapon.Scripts;
 using Shot_Shift.Infrastructure.Scripts.Factories;
 using Shot_Shift.Infrastructure.Scripts.Services;
@@ -21,6 +22,7 @@ namespace Shot_Shift.Actors.Player.Scripts
         private Rigidbody _rb;
         private bool _isFire;
         private bool _canWeaponChange = true;
+        private Coroutine _fireIsOverCoroutine;
 
         [Inject]
         private void Constructor(
@@ -53,7 +55,7 @@ namespace Shot_Shift.Actors.Player.Scripts
                 Shoot();
                 
                 _isFire = true;
-                Invoke(nameof(FireIsOver), 1 / _currentWeapon.WeaponConfig.ShotsPerSecond);
+                _fireIsOverCoroutine = StartCoroutine(FireIsOver());
             }
 
             if (_inputService.SwitchWeapon)
@@ -66,7 +68,7 @@ namespace Shot_Shift.Actors.Player.Scripts
                 UseBulletTime();
             }
         }
-        
+
         private void SwitchWeapon()
         {
             if (!_canWeaponChange) 
@@ -74,7 +76,8 @@ namespace Shot_Shift.Actors.Player.Scripts
 
             _canWeaponChange = false;
             _currentWeapon = _weaponsFactory.GetNextWeapon();
-            FireIsOver();
+            StopCoroutine(_fireIsOverCoroutine);
+            _isFire = false;
             Invoke(nameof(ChangeWeaponActivated), 0.5f);
         }
 
@@ -88,8 +91,9 @@ namespace Shot_Shift.Actors.Player.Scripts
             _abilitiesService.ActivateBulletTime();
         }
 
-        private void FireIsOver()
+        private IEnumerator FireIsOver()
         {
+            yield return new WaitForSeconds(1 / (_currentWeapon.WeaponConfig.ShotsPerSecond * _abilitiesService.SpeedCoefficient));
             _isFire = false;
         }
 
